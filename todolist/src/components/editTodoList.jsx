@@ -7,7 +7,7 @@ function editTodoList({editTodoListValue,setEditTodoListValue,updatedList}){
              placeholder='Add a task' 
              value={editTodoListValue} 
              onChange={(e)=>{setEditTodoListValue(e.target.value)}}/>
-             <button type='submit' class="btn btn-accent rounded-l-none max-w-xs">Save</button>
+             <button type='submit' className="btn btn-accent rounded-l-none max-w-xs">Save</button>
           </form>
         </>
     )

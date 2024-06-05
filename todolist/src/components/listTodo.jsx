@@ -31,7 +31,7 @@ const listTodo = ({todolist,editList,deleteList})=>{
                                     <Checkbox {...label} size="small" onClick={()=>{changeStyle(index)}}/>
                                 </div>
                                 <div className="mt-auto mb-auto w-4/5">
-                                    <span className={`mt-auto mb-auto text-wrap ${index === styleIndex ? style : ''}`} key={index}>{item}</span>
+                                    <span className={`mt-auto mb-auto text-wrap ${index === styleIndex ? style : ''}`}>{item}</span>
                                 </div>
                             </div>
                             <div className="flex justify-end mr-2 gap-2 mt-auto mb-auto">
