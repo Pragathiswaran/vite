@@ -1,0 +1,13 @@
+#background-container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/a56dc29b-a0ec-4f6f-85fb-50df0680f80f/2f8ae902-8efe-49bb-9a91-51b6fcc8bf46/IN-en-20240617-popsignuptwoweeks-perspective_alpha_website_small.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 150px 100px 200px 200px rgba(0, 0, 0,0.8); /* Inner shadow effect */
+}
+
+
+
