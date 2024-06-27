@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/32/32339.png" width="100px"/>
+         <!-- <p>+</p> -->
+    </div>
+</body>
+<script>
+
+    const container = document.querySelector('.container');
+    const image = document.querySelector('img');
+    var value = false;
+    container.addEventListener('click', () => {
+        if(!value){
+            image.style.transform = 'rotate(-45deg)' 
+        }else{
+            image.style.transform = 'rotate(0deg)'
+        }
+        value =!value
+    });
+
+</script>
+</html>

@@ -10,7 +10,7 @@ const getStartForm = () => {
             <div className='flex w-full gap-2 justify-center'>
                 <input type="text" 
                     placeholder="Email address" 
-                    className='h-14 w-1/4 pl-3 bg-netflix-black border border-gray-700'
+                    className='h-14 w-1/4 pl-3 bg-netflix-black border border-gray-700 text-white focus:outline-none focus:border-gray-500'
                 />
                 <button className='bg-red-700 text-white text-2xl font-semibold w-52 flex justify-center pt-2'>
                     <span>

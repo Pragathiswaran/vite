@@ -1,0 +1,45 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+
+.container{
+    display: grid;
+    place-items: center; 
+    margin-top: 60px;
+    text-align: center;
+   
+
+}
+img{
+    /* transform: rotate(-90deg); */
+    transition: all .3s;
+}
+
+/* img:active{
+    transition: all; 
+    animation: circle 1s ease-out;
+    transform: rotate(-90deg);
+    animation: 1s ease-out ;
+} */
+
+
+/* p{
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+p:hover{
+    transform: rotate(-90deg); 
+    transition: all;
+    animation: circle 1s initial;
+} */
+@keyframes circle{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-90deg);
+    }
+}
