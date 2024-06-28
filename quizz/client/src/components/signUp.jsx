@@ -28,16 +28,13 @@ const signUp= () =>{
         setUserName(''); setEmail(''); setPassword(''); setConfirmPassword('')
     }
     const navigate = useNavigate();
-    const clickExit = (e)=>{
-        e.preventDefault()
-        navigate('/')
-    }
+
     return(
         <>
             <div className="mt-16 grid place-content-end">
                 <div className="bg-white py-10 mr-20 flex flex-col justify-center rounded-xl">
                     <div className="flex justify-end mr-5">
-                        <IconButton variant='none'  onClick={(e)=>clickExit(e)}>
+                        <IconButton variant='none' onClick={()=>navigate('/')}>
                             <CloseOutlinedIcon />
                         </IconButton>
                     </div>
@@ -76,7 +73,7 @@ const signUp= () =>{
                     <Button variant="contained" color='warning'> <GitHubIcon /></Button>
                     </div>
                     <div className="mt-6">
-                        <p>Already have an account? <a href="#">Log In</a></p>
+                        <p>Already have an account? <span onClick={()=>navigate('../login')}>Log In</span></p>
                     </div>
                     </div>
                 </div>
