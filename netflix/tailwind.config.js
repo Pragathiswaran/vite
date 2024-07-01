@@ -12,7 +12,10 @@ export default {
       fontSize:{
         '1xl':'1.75rem',
         '2.5xl':'2.5rem'
-      }
+      },
+      rotate:{
+        'neg-45':'-45deg'
+      },
     },
   },
   plugins: [],

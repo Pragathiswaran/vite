@@ -68,10 +68,10 @@ const FaqQuestion = () => {
             <div className='mb-4 transition-all'>
             <div className='flex justify-between bg-zinc-800 p-5 text-3xl mb-1 hover:bg-zinc-700' onClick={()=>handleClick(index)}>
               <div>{item.question}</div>
-              <div><AddIcon ref={el => addIcon.current[index] = el} className={`transition duration-700 ${clickedIndex === index ? 'rotate-45': ''}`} fontSize='large'/></div>
+              <div><AddIcon ref={el => addIcon.current[index] = el} className={`transition duration-700 ${clickedIndex === index ? 'rotate-neg-45': ''}`} fontSize='large'/></div>
             </div>
             <div>
-              <div className={`w-full bg-zinc-800 p-6 ${ clickedIndex === index ? 'block' : 'hidden' }`} ref={faqContent}>
+              <div className={`w-full bg-zinc-800 p-6 transition-all ${ clickedIndex === index ? 'block' : 'hidden' }`} ref={faqContent}>
                 <p className='text-white text-xl'>{item.answer}</p>
               </div>
             </div>

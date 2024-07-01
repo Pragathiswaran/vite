@@ -8,8 +8,7 @@ body{
     place-items: center; 
     margin-top: 60px;
     text-align: center;
-   
-
+    
 }
 img{
     /* transform: rotate(-90deg); */
@@ -22,7 +21,6 @@ img{
     transform: rotate(-90deg);
     animation: 1s ease-out ;
 } */
-
 
 /* p{
     font-size: 30px;
@@ -42,4 +40,14 @@ p:hover{
     100%{
         transform: rotate(-90deg);
     }
+}
+
+.boxes{
+    margin-top: 10px;
+    border: 1px solid black;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: red;
+
 }

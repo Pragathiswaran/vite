@@ -18,3 +18,26 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.faq-slide{
+  animation: slideInOut 1s ease-in-out;
+}
+
+@keyframes slideInOut {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-200);
+  }
+  50%{
+    opacity: 0.5;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
