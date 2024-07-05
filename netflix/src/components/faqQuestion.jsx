@@ -71,7 +71,7 @@ const FaqQuestion = () => {
               <div><AddIcon ref={el => addIcon.current[index] = el} className={`transition duration-700 ${clickedIndex === index ? 'rotate-neg-45': ''}`} fontSize='large'/></div>
             </div>
             <div>
-              <div className={`w-full bg-zinc-800 p-6 transition-all ${ clickedIndex === index ? 'block' : 'hidden' }`} ref={faqContent}>
+              <div className={`bg-zinc-800 p-6 transition duration-500 ease-in ${ clickedIndex === index ? 'block h-80' : 'hidden h-0' }`} ref={faqContent}>
                 <p className='text-white text-xl'>{item.answer}</p>
               </div>
             </div>

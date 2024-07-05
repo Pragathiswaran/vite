@@ -1,19 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transition Animation</title>
+<style>
+  .click-box {
+    margin-top: 10px;
+    width: 600px;
+    height: 50px;
+    background-color: black;
+    cursor: pointer;
+  }
+
+  .boxes {
+    display: hidden;
+    margin-top: 10px;
+    width: 100px;
+    height: 0;
+    background-color: red;
+    transition: all 0.3s ease-in;
+  }
+
+  .boxes.show {
+    display: block;
+    height: 150px;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- <img src="https://cdn-icons-png.flaticon.com/512/32/32339.png" width="100px"/> -->
-         <!-- <p>+</p> -->
-          <div class="boxes"></div>
-          <div class="boxes"></div>
-          <div class="boxes"></div>
-    </div>
+
+<div class="container">
+  <div class="click-box"></div>
+  <div class="click-box"></div>
+  <div class="boxes"></div>
+</div>
+
+<script>
+  const clickBox = document.querySelector('.click-box');
+  const box = document.querySelector('.boxes');
+
+  clickBox.addEventListener('click', () => {
+    if (box.classList.contains('show')) {
+    //  box.style.height = '0';
+    //  box.style.opacity = '0';
+    //  setTimeout(() => {
+        box.classList.remove('show');
+    //  }, 500);
+    } else {
+      box.classList.add('show');
+    //  requestAnimationFrame(() => {
+        // Trigger reflow
+    //    box.offsetHeight; 
+    //    box.style.height = '150px';
+     //   box.style.opacity = '1';
+     // });
+    }
+  });
+</script>
+
 </body>
-<script src="./app.js"></script>
 </html>
