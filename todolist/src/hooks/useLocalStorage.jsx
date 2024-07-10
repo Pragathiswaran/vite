@@ -7,7 +7,7 @@ const useLocalStorage = (key, initialValue) => {
             return item ? JSON.parse(item) : initialValue;
            
         }catch(error){
-            console.log(error);
+            console.error(error);
         }
     })
 
@@ -17,7 +17,7 @@ const useLocalStorage = (key, initialValue) => {
             setgetItem(valueToStore);
             window.localStorage.setItem(key,JSON.stringify(valueToStore));
         }catch (error){
-            console.log(error);
+            console.error(error);
         }
     }
 
@@ -27,17 +27,18 @@ const useLocalStorage = (key, initialValue) => {
             setgetItem(updatedArray);
             window.localStorage.setItem(key,JSON.stringify(updatedArray));
         }catch(error){
-            console.log(error);
+            console.error(error);
         }
     }
     const updateItem = (index,value)=>{
         try{
-            const updatedArray = getItem.map((item,i) => i === index ? value : item);
+            const updatedArray = getItem
+            updatedArray.map((item,id)=>id === index ? item.task = value : item)
             setgetItem(updatedArray);
             window.localStorage .setItem(key,JSON.stringify(updatedArray));
-            }catch(error){
-                console.log(error);
-            }
+        }catch(error){
+            console.error(error);
+        }
     }
 
     return [getItem, addItem, removeItem, updateItem];

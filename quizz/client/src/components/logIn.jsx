@@ -17,7 +17,7 @@ const logIn = ()=>{
     const navigate = useNavigate();
 
     const logInHnadler = (e) =>{
-        // e.preventDefault()
+        e.preventDefault()
         if(userNameLog === "" || passwordLog === ""){
             alert("Please fill all the fields")
             // setUsernameLog(""); setPasswordLog("")

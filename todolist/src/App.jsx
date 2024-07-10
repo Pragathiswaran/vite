@@ -12,12 +12,18 @@ function App() {
   const [editTodoListValue, setEditTodoListValue] = useState('');
   const [editTodoListIndex,setEditTodoListIndex] = useState('');
 
+  const timeDate = ()=>{
+    const date = new Date();
+    const time$date = date.toLocaleString('en-ID').split(',')
+    return `${time$date}`
+  }
+
   const addList = (e)=>{
     e.preventDefault();
     if(task === ''){
       toast.error('Please enter a task');
     } else {
-      const updateTodoList = [...todolist,task]
+      const updateTodoList = [...todolist,{'task':task, 'create':timeDate()}]
       setTodolist(updateTodoList);
       setTask('');
     }
@@ -28,7 +34,7 @@ function App() {
   }
 
   const editList =(index, item)=>{
-    setEditTodoListValue(item);
+    setEditTodoListValue(item.task);
     setEditTodoListIndex(index);
     setEditToDoList(true)
   }
@@ -40,6 +46,7 @@ function App() {
     setEditTodoListValue('')
     setEditTodoListIndex('')
   }
+ 
  
   return (
     <>
@@ -56,11 +63,13 @@ function App() {
       <ul className='ml-auto mr-auto w-3/4 mt-10 max-h-72 overflow-hidden overflow-y-scroll scrollbar-hide scroll-smooth'>
         <ListTodo todolist={todolist} editList={editList} deleteList={deleteList}/>
       </ul>
-      </div>      
+      </div> 
     </div>
+
     </>
 
   );
 }
+
 
 export default App;
