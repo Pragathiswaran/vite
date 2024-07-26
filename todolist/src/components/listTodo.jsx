@@ -24,14 +24,13 @@ const listTodo = ({ todolist, editList, deleteList }) => {
 
   const changeStyle = (index) => {
     setStyleIndex(index);
-    setStyle((prevStyle) => (prevStyle === 'no-underline' ? 'line-through decoration-red-600' : 'no-underline'));
+    setStyle((prevStyle) => (prevStyle === 'no-underline' ? 'text-red-600 line-through decoration-red-50' : 'no-underline'));
   };
 
   const displayTime = (index) => {
         setVisibility((prevVisibility) => {
             const newVisibility = [...prevVisibility];
             newVisibility[index] = newVisibility[index] === 'hidden' ? 'block' : 'hidden';
-          //   alert(newVisibility)
             return newVisibility;
         });
    
