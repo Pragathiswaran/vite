@@ -1,34 +1,13 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import {useForm}  from 'react-hook-form'
-import {DevTool} from '@hookform/devtools'
-
-function App() {
- 
-  const form = useForm()
-  const {register,unregister , control} = form
+import Login from './components/login'
+import Signup from './components/signup';
+export default function App() {
   return (
-    <div className='w-80 mx-auto mt-28 border-4 p-10 border-black'>
-      <form className='flex flex-col'>
-        <label htmlFor='username'>username</label>
-        <input 
-            type="text" 
-            className='border-2 border-black'
-            {...register('username')}
-        />
-
-        <label htmlFor='password'>password</label>
-        <input 
-            type="text" 
-            className='border-2 border-black'
-            {...register('password')}
-        />
-        <button className='border-2 border-black mt-3'>Submit</button>
-      </form>
-      <DevTool control={control}/>
-
-    </div>
+      <Routes>
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+      </Routes>
   )
 }
-
-export default App
