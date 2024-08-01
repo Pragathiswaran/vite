@@ -19,7 +19,7 @@ export default function signup() {
 
     const onSubmit = (data) => console.log(data)
   return (
-    <div className="flex justify-center mt-44">
+    <div className="flex justify-center mt-32">
         <form onSubmit = {handleSubmit(onSubmit)} className='flex flex-col w-80 border-2 border-black p-10'>
             <label htmlFor='username'>Username</label>
             <input {...register("username")} name="username" 
