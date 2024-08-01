@@ -9,12 +9,31 @@
 //     }
 //     value =!value
 // });
-const clickBox = document.querySelector('.click-box')
-const box = document.querySelector('.boxes')
+// const clickBox = document.querySelector('.click-box')
+// const box = document.querySelector('.boxes')
 
-clickBox.addEventListener('click', () => {
-    box.style.display = "block"
-    // box.style.transform = "translateY(150px)"
-    box.style.transition = "all .5s ease-in"
+// clickBox.addEventListener('click', () => {
+//     box.style.display = "block"
+//     // box.style.transform = "translateY(150px)"
+//     box.style.transition = "all .5s ease-in"
+// })
+
+
+const pokimon = new Promise ((resolve,reject)=>{
+    fetch('https://pokeapi.co/api/v2/pokemon/pikachu').then(
+        res=>{
+            if(!res.ok){
+                throw new Error(`Not found ${res.statusText}`)
+            }
+
+            return res.json()
+        }
+    ).then(data=>resolve(data))
+    .catch(err=>reject(err))
 })
 
+pokimon.then((data)=>{
+    console.log(data)
+}).catch((data)=>{
+    console.log(data)
+})
