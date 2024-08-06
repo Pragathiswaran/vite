@@ -51,15 +51,13 @@ const loginUser = async (req,res) => {
         if(!match){
             return res.json({path:"password", error:"Invalid Password"})
         }
-        const privateKey = 525312255473278
+       
         if(match){
             jwt.sign({email: user.email, id : user._id, name : user.name},process.env.JWT_SECRET,{}, (err,token) => {
                 if(err) throw err;
-                res.cookie('token',token).json({message:'json webtoken success'})
+                res.cookie('token',token).json(user)
             })
         }
-        return res.json({message:'success'})
-
     }catch(error){
         console.log(error)
         return res.status(500).json({error:error.message})
