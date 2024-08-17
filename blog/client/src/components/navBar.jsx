@@ -12,6 +12,9 @@ function navBar() {
         <li>
           <Link to='/'>about</Link>
         </li>
+        <li>
+          <Link to='/'>contact</Link>
+        </li>
       </ul>
     </nav>
     </>
