@@ -1,16 +1,15 @@
+import { height, padding } from "@mui/system";
+
 export const navbarStyles = {
     drawer: {
-        width: 300,
+        width: 280,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-            width: 300,
+            width: 260,
             boxSizing: 'border-box',
             backgroundColor: '#101F33',
             color: 'rgba(255, 255, 255, 0.7)',
-        },
-        '& .Mui-selected': {
-            color: 'red',
-        },
+        }
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.7)',
@@ -18,12 +17,21 @@ export const navbarStyles = {
     },
     text: {
         '& span': {
-            fontWeight: '600',
-            fontSize: '16px',
-            margin:"5px",
+            fontWeight: '500',
+            fontSize: '14px',
         }
     },
     list:{
-        marginTop:"-15px"
+        marginTop:"-10px",
+        padding:'-40px',
+        '&:hover':{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        }
+    },
+    buttonHover:{
+        '.Mui-focusVisible':{
+            margin:'2px'
+        },
+        
     }
 }
