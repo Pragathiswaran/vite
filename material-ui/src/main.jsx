@@ -7,22 +7,27 @@ import Storage from "./pages/navbarPages/storage";
 import Function from "./pages/navbarPages/functions";
 import Hosting from "./pages/navbarPages/hosting"; 
 import MachineLearning from "./pages/navbarPages/machineLearning";
+import { ThemeProvider } from '@mui/material/styles';
 import App from './App.jsx'
 import './index.css'
+import { dashBoardTheme } from './dashBoardTheme';
+
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter >
-      <Routes>
-        <Route path="/" element={<App />} >
-        <Route path="authentication" element={<Authentication />} />
-        <Route path="database" element={<Database />} />
-        <Route path="storage" element={<Storage />} />
-        <Route path="hosting" element={<Hosting />} /> {/* Corrected component */}
-        <Route path="function" element={<Function />} /> {/* Corrected component */}
-        <Route path="machine-learning" element={<MachineLearning />} /> {/* Corrected component name */}
-      </Route>
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>,
+  <ThemeProvider theme={dashBoardTheme}>
+    <StrictMode>
+      <BrowserRouter >
+        <Routes>
+          <Route path="/" element={<App />} >
+            <Route path="authentication" element={<Authentication />} />
+            <Route path="database" element={<Database />} />
+            <Route path="storage" element={<Storage />} />
+            <Route path="hosting" element={<Hosting />} /> 
+            <Route path="function" element={<Function />} /> 
+            <Route path="machine-learning" element={<MachineLearning />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </StrictMode>
+  </ThemeProvider>
 )

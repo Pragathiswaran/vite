@@ -12,37 +12,32 @@ import { navbarStyles } from './style';
 import { useNavigate } from 'react-router-dom'
 
 const navbar = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   return (
-    <>
-        <Drawer
-        sx={navbarStyles.drawer}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-          {mainNavbarItems.map((items, index) => (
-            <ListItem 
-              key={items.id}
-              onClick={() => navigate(items.routes)} 
-              sx={navbarStyles.list}
-            >
-              <ListItemButton>
-                <ListItemIcon 
-                sx={navbarStyles.icon}
-                >
+    <Drawer
+    sx={navbarStyles.drawer}
+    variant="permanent"
+    anchor="left"
+   
+    >
+    <Toolbar />
+    <List >
+      {mainNavbarItems.map((items, index) => (
+        <ListItem   
+          key={items.id}
+          onClick={() => navigate(items.routes)} 
+          sx={navbarStyles.list} disablePadding>
+            <ListItemButton disablePadding>
+              <ListItemIcon 
+              sx={navbarStyles.icon} disablePadding>
                   {items.icon}
                 </ListItemIcon>
-                <ListItemText primary={items.lable} />
-              </ListItemButton>
-            </ListItem>
+                <ListItemText primary={items.lable} sx={navbarStyles.text} disablePadding/>
+            </ListItemButton>
+        </ListItem>
           ))}
         </List>
-        <Divider />
       </Drawer>
-    </>
   )
 }
 
