@@ -1,9 +1,10 @@
 import { createTheme } from "@mui/material/styles"
+import { deepPurple, purple } from '@mui/material/colors';
 export const dashBoardTheme = createTheme({
     components:{
         palette:{
-            primary:{
-                main:'#2196f3',
+            secondary:{
+                main:deepPurple[50],
             }
         }
     }

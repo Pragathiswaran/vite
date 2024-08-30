@@ -9,18 +9,22 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material';
 
 const Authentication = () => {
-  const [value, setValue] = React.useState('one');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const [value,setVlaue] = React.useState(0)
+  const CustomTab = styled(Tab)(({theme})=>({
+    padding:0,
+    minWidth: 0,
+    marginLeft:16,
+    marginRight:16,
+    fontWeight: 600,
+    fontSize: '14px'
+  }))
 
   return (
     <>
-      <AppBar sx={{width:"83.2%", margin:" 0 auto", bgcolor:"#009be5"}} variant='outlined'>
+      <AppBar sx={{p:0}} color='primary' position='sticky' elevation={0}>
         <Toolbar>
           <Grid container>
             <Grid container sx={{py:1}}>
@@ -44,21 +48,15 @@ const Authentication = () => {
             </Grid>    
           </Grid> 
         </Toolbar>
-        <Toolbar>
-        <Box sx={{ width: '100%' }}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        textColor="inherit"
-        indicatorColor="secondary"
-        aria-label="secondary tabs example"
+      <Tabs value={0} 
+        textColor="inherit" 
+        TabIndicatorProps={{sx:{backgroundColor:'white',height:'4px',borderRadius:'5px', borderBottom:"0px"}}}
       >
-        <Tab value="one" label="Item One" />
-        <Tab value="two" label="Item Two" />
-        <Tab value="three" label="Item Three" />
+        <CustomTab label="Users" />
+        <CustomTab label="Sign-in method" />
+        <CustomTab label="Template" />
+        <CustomTab label="Usage" />
       </Tabs>
-    </Box>
-        </Toolbar>
       </AppBar>
 
     </>
