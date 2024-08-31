@@ -9,33 +9,39 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material';
+import Box from '@mui/material/Box';
+import { Stack, CssBaseline } from '@mui/material';
+import SearchForm from '../../component/form/searchForm';
 
 const Authentication = () => {
   // const [value,setVlaue] = React.useState(0)
   const CustomTab = styled(Tab)(({theme})=>({
     padding:0,
     minWidth: 0,
-    marginLeft:16,
-    marginRight:16,
+    marginLeft:12,
+    marginRight:12,
     fontWeight: 600,
     fontSize: '14px'
   }))
 
   return (
     <>
-      <AppBar sx={{p:0}} color='primary' position='sticky' elevation={0}>
+    <CssBaseline />
+    <Box sx={{ width: '100%'}}>
+    <AppBar position="static" sx={{width:'100%',p:0, m:0}} color='primary' elevation={0}>
         <Toolbar>
           <Grid container>
             <Grid container sx={{py:1}}>
               <Grid item xs={16} sx={{display:"flex", justifyContent:"flex-end"}}>
-                <Button color="inherit" size='small'>Go to docs</Button>
-                <IconButton color='inherit'>
-                  <NotificationsIcon size="small"/>
-                </IconButton>
-                <IconButton color="inherit">
-                  <AccountCircleIcon size="small" />
-                </IconButton>
+                <Stack direction='row'>
+                  <Button color="inherit" size='small'>Go to docs</Button>
+                  <IconButton color='inherit'>
+                    <NotificationsIcon size="small"/>
+                  </IconButton>
+                  <Avatar alt="Remy Sharp" sizes='small' src="/static/images/avatar/1.jpg" />
+                </Stack>
               </Grid>
             </Grid>
             <Grid container sx={{py:1}}>
@@ -48,17 +54,20 @@ const Authentication = () => {
             </Grid>    
           </Grid> 
         </Toolbar>
-      <Tabs value={0} 
-        textColor="inherit" 
-        TabIndicatorProps={{sx:{backgroundColor:'white',height:'4px',borderRadius:'5px', borderBottom:"0px"}}}
-      >
-        <CustomTab label="Users" />
-        <CustomTab label="Sign-in method" />
-        <CustomTab label="Template" />
-        <CustomTab label="Usage" />
-      </Tabs>
       </AppBar>
-
+      <AppBar position="static" sx={{width:'100%'}} elevation={0}>
+        <Tabs value={0} 
+          textColor="inherit" 
+          TabIndicatorProps={{sx:{backgroundColor:'white',height:'4px',borderRadius:'5px', borderBottom:"0px"}}}
+        >
+          <CustomTab label="Users" />
+          <CustomTab label="Sign-in method" />
+          <CustomTab label="Template" />
+          <CustomTab label="Usage" />
+        </Tabs>
+      </AppBar>
+    </Box>
+    <SearchForm />
     </>
   )
 }

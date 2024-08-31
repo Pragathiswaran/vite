@@ -16,7 +16,8 @@ const navbar = () => {
   const navigate = useNavigate()
   return (
     <>
-      <Drawer sx={navbarStyles.drawer} variant="permanent" anchor="left">
+      <Box sx={{width:"100%"}}>
+      <Drawer sx={{...navbarStyles.drawer}} variant="permanent" anchor="left">
           <List disablePadding>
             <ListItem sx={{...navbarStyles.listItems}}>
               Paperbase
@@ -49,6 +50,7 @@ const navbar = () => {
             ))}
           </List>
       </Drawer>
+      </Box>
     </>
   )
 }
