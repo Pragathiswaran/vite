@@ -17,6 +17,13 @@ export const dashBoardTheme = createTheme({
                     margin:0,
                 }
             }
+        },
+        MuiButton:{
+            styleOverrides:{
+                root:{
+                    textTransform:'capitalize'
+                }
+            }
         }
     },
     palette:{
