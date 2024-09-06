@@ -1,37 +1,70 @@
-body{
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container{
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Navbar positioned at the bottom */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #333;
+    z-index: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.box-container{
-   bottom:10px
-}
-
-.box{
-    background-color: red;
-    padding: 70px;
+.button-container {
     position: relative;
 }
 
-@keyframes mymove {
-    10% {top: 200px;}
-    100% {top: 0px;}
-  }
-
-.bottom-navbar{
-    background-color: #333;
-    color: white;
+.center-button {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background-color: white;
+    border: 5px solid #333;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    z-index: 1000; /* So it appears above the navbar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    /* transition: transform 1s ease-in-out; */
+    transform: translateY(-30px);
+
+}
+
+/* .center-button:hover {
+    transform: scale(4);
+} */
+
+/* Optional background design for the navbar */
+.navbar::before {
+    content: '';
+    position: absolute;
     width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        -45deg,
+        #333,
+        #333 10px,
+        #444 10px,
+        #444 20px
+    );
+    z-index: -1; /* Keep it behind everything */
 }
