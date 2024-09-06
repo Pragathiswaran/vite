@@ -1,15 +1,13 @@
-.parent {
-  margin-top: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  background: black;
-  width: 10px;
-  height: 10px;
- 
+.top {
+  --top: radial-gradient(calc(19px + 89px) at 50% calc(100% + 19px),#0000 98%,#000);
+  -webkit-mask: var(--top);
+          mask: var(--top);
 }
-
-.parent[data-isOpen="true"] {
-  
-  width: 400px;
-  height: 200px;
+.bottom {
+  --bottom: 
+   linear-gradient(#000 0 0) bottom/100% calc(100% - 89px) no-repeat,
+   radial-gradient(farthest-side,#000 98%,#0000) top/178px 178px no-repeat;
+  -webkit-mask: var(--bottom);
+          mask: var(--bottom);
+  margin-top: -70px;
 }
