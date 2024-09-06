@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Navbar</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-      <div class="box-container">
-        <div class="box">box</div>
-      </div>
-      <div class="bottom-navbar">
-        <div class="bottom-navbar__item">
-          <button id="home-btn">Home</button>
-        </div>
-      </div>
-    </div>
-    <script>
-      const box = document.querySelector('.box');
-      const bottomNavbar = document.querySelector('#home-btn');
-      bottomNavbar.addEventListener('click', () => {
-        box.style.animation = 'mymove 1s ease-in';
-      });
 
-    </script>
+    <main>
+        <h1>Content Above the Navbar</h1>
+        <p>This is some content that appears above the navbar.</p>
+    </main>
+
+    <nav class="navbar">
+        <div class="button-container">
+            <button class="center-button">+</button>
+        </div>
+    </nav>
+
 </body>
 </html>
