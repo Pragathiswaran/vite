@@ -5,7 +5,7 @@ const Themes = createTheme({
         MuiList:{
             styleOverrides:{
                 root:{
-                    paddingLeft:'130px'
+                    paddingRight:'40px'
                 }
             }
         },
@@ -16,38 +16,28 @@ const Themes = createTheme({
                 }
             }
         },
-        MuiListItemButton:{
+       MuiListItemButton:{
             styleOverrides:{
                 root:{
-                    // padding:0,
-                    margin:0,
-                    borderRadius:30,
-                    fontSize:20,
-                    '& .MuiListItemButton-root':{
-                        padding:10,
-                        margin:10,
-                    }
+                   
                 }
             }
         },
-        MuiListItemIcon:{
+        MuiDrawer:{
             styleOverrides:{
                 root:{
+                    width:400,
+                    flexShrink:0,
+                    border:'none',
+                },
+                paper:{
+                    width:400,
+                    boxSizing:'border-box',
+                    background:'transparent',
                     color:'white',
-                    fontSize:30,
-                    padding:0,
                 }
             }
-        },
-        MuiListItemText:{
-            styleOverrides:{
-                root:{
-                    color:'white',
-                    fontSize:60,
-                    padding:0,
-                }
-            }
-        },
+        }
     }
 })
 
