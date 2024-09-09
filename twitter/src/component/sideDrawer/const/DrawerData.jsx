@@ -4,85 +4,84 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import XIcon from '@mui/icons-material/X';
 import ElectricBoltTwoToneIcon from '@mui/icons-material/ElectricBoltTwoTone';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreTwoToneIcon from '@mui/icons-material/MoreTwoTone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-const DrawerContent = [
+const DrawerContent = 
       {
-      logo:<FontAwesomeIcon icon={faXTwitter} />,
+      logo:<XIcon fontSize='large'  sx={{fontWeight:'bold'}}/>,
       menu:[
          {
             id:0,
             lable:'Home',
-            icon:<HomeIcon />,
+            icon:<HomeIcon fontSize='large'/>,
             route:'home',
             
          },
          {
              id:1,
              lable:'Explore',
-             icon:<SearchIcon />,
+             icon:<SearchIcon fontSize='large'/>,
              route:'explore',
              
           },
           {
              id:2,
              lable:'Notification',
-             icon:<NotificationsNoneOutlinedIcon />,
+             icon:<NotificationsNoneOutlinedIcon fontSize='large'/>,
              route:'notification',
              
           },
           {
              id:3,
              lable:'Message',
-             icon:<MailOutlineOutlinedIcon />,
+             icon:<MailOutlineOutlinedIcon fontSize='large'/>,
              route:'message',
              
           },
           {
              id:4,
              lable:'Grok',
-             icon:<CheckBoxOutlineBlankOutlinedIcon />,
+             icon:<CheckBoxOutlineBlankOutlinedIcon fontSize='large'/>,
              route:'grok',
              
           },
           {
              id:5,
              lable:'Communitiies',
-             icon:<PeopleAltOutlinedIcon />,
+             icon:<PeopleAltOutlinedIcon fontSize='large'/>,
              route:'communitiies',
              
           },
           {
              id:6,
              lable:'Premium',
-             icon:<FontAwesomeIcon icon={faXTwitter} />,
+             icon:<XIcon />,
              route:'premium',
              
           },
           {
              id:7,
              lable:'Verified Orgs',
-             icon:<ElectricBoltTwoToneIcon />,
+             icon:<ElectricBoltTwoToneIcon fontSize='large'/>,
              route:'verified-orgs',
              
           },
           {
              id:8,
              lable:'Profile',
-             icon:<PermIdentityIcon />,
+             icon:<PermIdentityIcon fontSize='large'/>,
              route:'profile',
              
           },
           {
              id:9,
              lable:'More',
-             icon:<MoreTwoToneIcon />,
+             icon:<MoreTwoToneIcon fontSize='large'/>,
              route:'more',
              
           }
@@ -90,12 +89,12 @@ const DrawerContent = [
       post:'Post',
       profile:{
          id:0,
-         profileLogo:<AccountCircleIcon />,
-         profileName:"Pragathiswaran",
-         profileId:"@pragathiswaran",
-         profileMenuIcon:<MoreHorizIcon />
+         logo:<AccountCircleIcon sx={{width:'52px',height:'52px'}}/>,
+         name:"Pragathis",
+         Pid:"@pragathis",
+         menu:<MoreHorizIcon />,
       }
-      },
-]
+      }
+
 
 export default DrawerContent
