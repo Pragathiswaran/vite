@@ -11,7 +11,7 @@ const App = () => {
           <DrawerNavbar />
         </Grid>
         <Grid item xs={8}>
-            <Home />
+            {/* <Home /> */}
         </Grid>
       </Grid>
       
