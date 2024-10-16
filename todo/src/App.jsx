@@ -30,32 +30,13 @@ function App() {
           <div className="flex justify-center w-1/4 h-32 border border-black m-3">
           
           </div>
-          <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-        </div>
-        <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-          </div>
-          <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-          </div>
-          <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-          </div>
-          <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-          </div>
-          <div className="flex justify-center w-1/4 h-32 border border-black m-3">
-          
-          </div>
-        
       </section>
     </main>
    <footer className="fixed w-full bottom-0">
       <div className="menu__border"></div>
       <nav className="bg-blue-500 text-white w-full h-16 flex justify-center">
         <button className="relative bottom-16 bg-white text-gray-950 text-2xl w-28 h-28 rounded-full ">
-        <FontAwesomeIcon icon={faPlus} />
+        <FontAwesomeIcon icon={faPlus} className="text-4xl"/>
         </button>
       </nav>
    </footer>
