@@ -13,7 +13,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const DrawerContent = 
       {
-      logo:<XIcon fontSize='large'  sx={{fontWeight:'bold'}}/>,
+      logo:<XIcon sx={{width:'32px',height:'32px',padding:'0px'}}/>,
       menu:[
          {
             id:0,

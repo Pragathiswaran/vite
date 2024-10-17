@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        .menu__border {
+            width:150px;
+            height: 75px;
+            background-color: crimson;
+            border-radius: 100px 100px 0px 0px;
+            position: relative;
+        }
+
+        .menu__border::before {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 60%;
+            background-color: crimson;
+            bottom: 0px;
+            right: 100%;
+            border-radius: 100% 0px 0px 0px;
+            box-shadow: -20px -30px crimson, -40px -20px green, -20px -30px crimson;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="menu__border"></div>
+</body>
+</html>
