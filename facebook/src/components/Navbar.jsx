@@ -23,7 +23,7 @@ const Navbar = () => {
                 </div>
             </div>
           <div className='w-1/2 flex justify-center'>
-          {[faHome, faYoutube, faUser, faGamepad].map((tab, index) => {
+          {/* {[faHome, faYoutube, faUser, faGamepad].map((tab, index) => {
             const tabIndex = index + 1;
             return (
               <button
@@ -45,7 +45,18 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={tab} />
               </button>
             );
-          })}
+          })} */}
+          <nav className="flex gap-x-1" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
+            {
+              [faHome, faYoutube, faUser, faGamepad].map((tab, index) => (
+                <button type="button" className="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 hover:bg-gray-20 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none" id="tabs-with-underline-item-2" aria-selected="false" 
+                data-hs-tab="#tabs-with-underline-2" aria-controls="tabs-with-underline-1" role="tab" key={index+1}>
+                <FontAwesomeIcon icon={tab} />
+              </button>
+              ))
+            }
+           
+          </nav>
           </div>
            <div className='w-1/4 flex justify-end items-center gap-x-2'>
            {[faGripVertical, faFacebookMessenger, faBell, faUser].map((tab, index) => (

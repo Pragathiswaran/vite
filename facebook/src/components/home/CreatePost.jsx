@@ -11,7 +11,7 @@ const CreatePost = () => {
     ]
   return (
     <>
-        <div class="flex flex-col bg-white shadow-xl border rounded-xl p-4 md:p-5 dark:text-neutral-400">
+        <div class="flex flex-col bg-white border rounded-xl p-4 md:p-5 dark:text-neutral-400">
             <div className='flex items-center justify-around pb-2 border-b-2'>
                 <FontAwesomeIcon icon={faUser} className='text-4xl'/>
                 <div class="w-5/6 space-y-3">
