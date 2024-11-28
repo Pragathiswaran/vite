@@ -1,122 +1,72 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 
 const Story = () => {
-  const carouselRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [totalSlides, setTotalSlides] = useState(0);
-
-  useEffect(() => {
-    // Calculate total slides on mount
-    const slides = carouselRef.current.querySelectorAll(".hs-carousel-slide");
-    setTotalSlides(slides.length);
-  }, []);
-
-  const goToSlide = (index) => {
-    const carouselBody = carouselRef.current.querySelector(".hs-carousel-body");
-    const slideWidth =
-      carouselRef.current.querySelector(".hs-carousel-slide").offsetWidth + 8; // Adjust for gap
-
-    // Constrain index to valid range
-    const newIndex = Math.max(0, Math.min(index, totalSlides - 1));
-    setCurrentIndex(newIndex);
-    carouselBody.style.transform = `translateX(-${newIndex * slideWidth}px)`;
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      goToSlide(currentIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentIndex < totalSlides - 1) {
-      goToSlide(currentIndex + 1);
-    }
-  };
 
   return (
-    <div
-      className="relative mt-3"
-      ref={carouselRef}
-    >
-      <div className="hs-carousel w-full overflow-hidden bg-white rounded-lg">
-        <div className="relative min-h-72 -mx-1">
-          <div className="hs-carousel-body flex transition-transform duration-700">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                className="hs-carousel-slide snap-center px-2"
-                key={`slide-${index}`}
-              >
-                <div className="flex flex-col w-32 h-60 shadow-xl rounded-xl bg-white dark:bg-gray-800">
+   <>
+<div data-hs-carousel='{
+  "loadingClasses": "opacity-0",
+  "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer",
+  "slidesQty": {
+    "xs": 1.3,
+    "lg": 4.9
+  },
+  "isDraggable": true
+}' class="relative mt-2">
+  <div class="hs-carousel scrollbar-hide scroll-smooth overflow-x-auto rounded-lg">
+    <div class="relative h-60 -mx-1">
+      <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
+        {
+          Array.from({length:10}).map((_,index)=>(
+            <>
+                <div class="hs-carousel-slide px-1" key={index}>
+                <button type="button" class="absolute flex shrink-0 justify-center items-center mt-2 ml-2 gap-2 size-[44px] text-sm font-medium rounded-full border-3 border-green-500 bg-white text-blue-600 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                      <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                  </button>
+        <div className="flex flex-col w-full h-60 rounded-xl bg-white-0">
                   <img
-                    className="w-full h-4/5 rounded-t-xl"
+                    className="w-full h-4/5 rounded-t-xl object-cover"
                     src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
-                    alt={`Slide ${index + 1}`}
                   />
                   <div className="p-4">
+                  <button type="button" class="absolute flex shrink-0 justify-center items-center gap-2 size-[38px] text-sm font-medium rounded-full border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                      <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                  </button>
                     <p className="mt-1 text-slate-950 text-center">create</p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
         </div>
+            </>
+          ))
+        }
       </div>
-
-      {/* Previous Button */}
-      <button
-        type="button"
-        className={`hs-carousel-prev absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 ${
-          currentIndex === 0 ? "opacity-50 pointer-events-none" : ""
-        }`}
-        onClick={handlePrev}
-      >
-        <span className="text-2xl" aria-hidden="true">
-          <svg
-            className="shrink-0 size-5"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m15 18-6-6 6-6"></path>
-          </svg>
-        </span>
-        <span className="sr-only">Previous</span>
-      </button>
-
-      {/* Next Button */}
-      <button
-        type="button"
-        className={`hs-carousel-next absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 ${
-          currentIndex === totalSlides - 1 ? "opacity-50 pointer-events-none" : ""
-        }`}
-        onClick={handleNext}
-      >
-        <span className="sr-only">Next</span>
-        <span className="text-2xl" aria-hidden="true">
-          <svg
-            className="shrink-0 size-5"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-        </span>
-      </button>
     </div>
+  </div>
+
+  <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg">
+    <span class="text-2xl" aria-hidden="true">
+      <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"></path>
+      </svg>
+    </span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg">
+    <span class="sr-only">Next</span>
+    <span class="text-2xl" aria-hidden="true">
+      <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </span>
+  </button>
+</div> 
+   </>
   );
 };
 

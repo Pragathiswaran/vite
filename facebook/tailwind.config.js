@@ -11,9 +11,15 @@ export default {
         'gray-20' : 'rgba(226, 229, 234,1)',
         'gray-30' : 'rgba(224, 228, 232)',
         'white-0' : " #fff",
+      },
+      borderWidth:{
+        '3':'3px'
       }
     },
   },
-  plugins: [require('preline/plugin')],
+  plugins: [
+    require('preline/plugin'),
+    require('tailwind-scrollbar-hide')
+  ],
 }
 
