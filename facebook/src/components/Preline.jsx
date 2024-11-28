@@ -24,11 +24,11 @@ const Preline = () => {
         console.warn('HSStaticMethods is not defined. Preline may not be loaded.');
       }
     } catch (err) {
-      console.error('Error initializing Preline:', err);
+      console.error("Error initializing Preline:", err);
     }
   }, [location.pathname]);
 
-  return null; // Empty component, no rendering needed
+  return null; 
 };
 
 export default Preline;
