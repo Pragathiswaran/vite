@@ -1,6 +1,7 @@
 import React from 'react'
 import CreatePost from './CreatePost'
 import Story from './Story'
+import Post from './Post'
 const Home = () => {
   return (
     <>
@@ -11,9 +12,10 @@ const Home = () => {
   </div>
 
   {/* Column 2: Main Content */}
-  <div className="flex flex-col overflow-x-hidden max-w-full">
+  <div className="flex flex-col overflow-x-hidden max-w-full mt-12 ">
     <CreatePost />
     <Story />
+    <Post />
     {/* <Carousel/> */}
   </div>
 
