@@ -16,7 +16,7 @@ const Navbar = () => {
   ]
   return (
     <>
-      <div className="w-full bg-white-0 shadow-md pt-1 px-1">
+      <div className="w-full bg-white-0 shadow-md px-1 pt-1 fixed top-0 z-50">
         <div className="px-4 dark:border-neutral-700">
           <nav className="flex gap-x-2 justify-between" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
             <div className='flex items-center w-1/4'>
