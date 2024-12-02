@@ -10,12 +10,12 @@ const Story = () => {
   "loadingClasses": "opacity-0",
   "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer",
   "slidesQty": {
-    "xs": 2,
-    "lg": 5
+    "xs": 3,
+    "lg": 4.5
   },
   "isDraggable": true
 }' class="mt-2 relative">
-  <div class="hs-carousel scrollbar-hide scroll-smooth overflow-x-auto rounded-lg">
+  <div class="hs-carousel scrollbar scrollbar-hide scroll-smooth overflow-x-auto rounded-lg">
     <div class="relative h-60 -mx-1">
       <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
       <div class="hs-carousel-slide px-1 bg-white-0 relative"> 

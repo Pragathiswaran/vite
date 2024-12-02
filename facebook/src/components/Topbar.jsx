@@ -4,19 +4,18 @@ import { faHome, faGamepad, faUser, faBell, faGripVertical } from "@fortawesome/
 import { faFacebook, faFacebookMessenger, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Topbar = () => {
     const [activeTab, setActiveTab] = useState(1);
-    
     const NavIcons = [
       { icon: faHome,routes: '/home'},
       { icon: faYoutube,routes: '/videos'},
       { icon: faUser,routes: '/groups'},
       { icon: faGamepad,routes: '/games'},
-      { navs : [faGripVertical, faFacebookMessenger, faBell, faUser]}
-  ]
+      // { navs : [faGripVertical, faFacebookMessenger, faBell, faUser]}
+    ]
   return (
     <>
-      <div className="w-full bg-white-0 shadow-md px-1 pt-1 fixed top-0 z-50">
+      <div className="w-full bg-white-0 shadow-md px-1 fixed top-0 z-50">
         <div className="px-4 dark:border-neutral-700">
           <nav className="flex gap-x-2 justify-between" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
             <div className='flex items-center w-1/4'>
@@ -62,4 +61,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Topbar

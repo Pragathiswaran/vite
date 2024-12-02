@@ -19,7 +19,7 @@ export default {
   },
   plugins: [
     require('preline/plugin'),
-    require('tailwind-scrollbar-hide')
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),  
   ],
 }
 

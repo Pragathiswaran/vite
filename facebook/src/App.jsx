@@ -1,13 +1,14 @@
-import React,{useState} from 'react'
-import Navbar from './components/Navbar'
-import Home from './components/home/Home'
+import React from 'react'
+import Topbar from './components/Topbar'
+import {Outlet} from 'react-router-dom'
+
 
 const App = () => {
 
   return (
     <>
-      <Navbar />
-      <Home />
+      <Topbar />
+      <Outlet />
     </>
   )
 }
