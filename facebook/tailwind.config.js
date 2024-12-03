@@ -19,7 +19,8 @@ export default {
   },
   plugins: [
     require('preline/plugin'),
-    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),  
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
+    // require('@tailwindcss/forms'),  
   ],
 }
 
