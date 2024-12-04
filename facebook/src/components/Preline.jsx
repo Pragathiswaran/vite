@@ -5,9 +5,10 @@ const Preline = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Dynamically import Preline JS
     import('preline/preline')
-      .then(() => {
-        console.log('Preline JS imported successfully');
+      .then((Preline) => {
+        console.log('Preline JS imported successfully:', Preline);
       })
       .catch((err) => {
         console.error('Failed to load Preline JS:', err);
@@ -16,10 +17,16 @@ const Preline = () => {
 
   useEffect(() => {
     try {
-      // Ensure HSStaticMethods exists before calling
+      // Ensure HSStaticMethods exists and is initialized
       if (window.HSStaticMethods) {
-        window.HSStaticMethods.autoInit();
-        console.log('Preline initialized for route:', location.pathname);
+        // Check for required elements before initializing
+        const elements = document.querySelectorAll('[data-preline]');
+        if (elements.length > 0) {
+          window.HSStaticMethods.autoInit();
+          console.log('Preline initialized for route:', location.pathname);
+        } else {
+          console.warn('No elements found for Preline initialization.');
+        }
       } else {
         console.warn('HSStaticMethods is not defined. Preline may not be loaded.');
       }
@@ -28,7 +35,7 @@ const Preline = () => {
     }
   }, [location.pathname]);
 
-  return null; 
+  return null;
 };
 
 export default Preline;

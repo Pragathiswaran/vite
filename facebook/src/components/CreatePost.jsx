@@ -13,11 +13,11 @@ const CreatePost = () => {
     <>
         <div className="flex flex-col bg-white border rounded-xl p-4 md:p-2 dark:text-neutral-400">
             <div className='flex items-center justify-around pb-2 border-b-2'>
-            <img className="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" />
-            <div className="w-5/6 space-y-3">
-                    <input type="text" className="py-3 px-4 block w-full rounded-full text-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-200 dark:text-slate-900 dark:placeholder-neutral-600 focus:outline-none" 
-                    placeholder="What's is on your Mind?" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal"/>
-                </div>
+              <img className="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" />
+              <div className="w-5/6 space-y-3">
+                <input type="text" className="py-3 px-4 block w-full rounded-full text-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-200 dark:text-slate-900 dark:placeholder-neutral-600 focus:outline-none" 
+                placeholder="What's is on your Mind?" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal"/>
+              </div>
             </div>
             <div className='mt-2 flex justify-around'>
                 {
@@ -30,7 +30,7 @@ const CreatePost = () => {
                 }
             </div>
         </div>
-<div id="hs-scale-animation-modal" className="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-label">
+<div id="hs-scale-animation-modal" className="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" aria-labelledby="hs-scale-animation-modal-label">
   <div className="hs-overlay-animation-target hs-overlay-open:scale-100 hs-overlay-open:opacity-100 scale-95 opacity-0 ease-in-out transition-all duration-200 sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
     <div className="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto">
       <div className="flex justify-between items-center py-3 px-4 border-b">

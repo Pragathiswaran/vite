@@ -7,13 +7,16 @@ export default {
   theme: {
     extend: {
       colors:{
-        'gray-10':'rgb(226, 229, 233)',
+        'gray-10' : 'rgb(226, 229, 233)',
         'gray-20' : 'rgba(226, 229, 234,1)',
         'gray-30' : 'rgba(224, 228, 232)',
         'white-0' : " #fff",
       },
       borderWidth:{
         '3':'3px'
+      },
+      boxShadow:{
+        'r' : '4px 0 8px rgba(0,0,0,0.1)',
       }
     },
   },
