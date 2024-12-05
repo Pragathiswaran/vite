@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear, faVideo, faRocket, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Post from '../components/Post'
+// import { useState } from 'react'
 
 const PostData = [
   {
@@ -35,6 +36,8 @@ const icons = [
 ]
 
 const SideBar = () => {
+  const [activeTab, setActiveTab] = useState(1);
+
   return (
     <>
       <div className='flex justify-between pt-3'>
@@ -48,7 +51,7 @@ const SideBar = () => {
         </div>
         <ul className='pt-4'>
           { icons.map(items => (
-            <button className='py-2.5 px-1.5 rounded-lg flex items-center hover:bg-gray-100 focus:bg-gray-100 w-full' key={items.id}>
+            <button className='py-2.5 px-1.5 rounded-lg flex items-center hover:bg-gray-100 focus:bg-gray-100 w-full' aria-selected={activeTab === items.id ? true : false} key={items.id}>
               <div className='inline-flex justify-center items-center ml-2 bg-gray-200 size-[36px] rounded-full text-xl'>
                 <FontAwesomeIcon icon={items.icon} />
               </div>

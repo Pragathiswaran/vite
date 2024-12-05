@@ -18,27 +18,25 @@ const Contact = () => {
             Contacts 
           </div>
           <div className='w-16 inline-flex justify-between text-gray-500'>
-            { [faMagnifyingGlass, faEllipsis].map((icon, index) => (<><FontAwesomeIcon icon={icon} className='text-md' key={index}/> </>))}
+            { [faMagnifyingGlass, faEllipsis].map((icon, index) => (<FontAwesomeIcon icon={icon} className='text-md' key={index}/>))}
           </div>
         </div>
         <ul className='mt-4'>
           {Array.from({length: 10}).map((_, index) => (
-            <>
               <div className='inline-block hover:bg-gray-200 p-2 w-full rounded-l-lg' key={index}>
-                <div class="relative inline-block">
-                  <img class="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" />
-                  {false && <span class="absolute bottom-0 end-0 block size-2.5 rounded-full ring-2 ring-white bg-green-400"></span>}
+                <div className="relative inline-block">
+                  <img className="inline-block size-[38px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" />
+                  {false && <span className="absolute bottom-0 end-0 block size-2.5 rounded-full ring-2 ring-white bg-green-400"></span>}
                 </div>                
                 <span className='text-black font-semibold ml-2'>Rohan</span>
               </div>
-            </>
           ))}
         </ul>
       </nav>
       <div className='flex flex-col py-3 '>
           <span className='text-gray-500 font-semibold text-lg mx-1 mb-3'>Group Chart</span>
           <div className='inline-flex w-full p-2 hover:bg-gray-200 rounded-l-lg'>
-            <button type="button" class="py-4 px-4 inline-flex size-9 items-center justify-center gap-x-2 text-lg font-medium rounded-full border border-transparent text-gray-500 bg-gray-300 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">
+            <button type="button" className="py-4 px-4 inline-flex size-9 items-center justify-center gap-x-2 text-lg font-medium rounded-full border border-transparent text-gray-500 bg-gray-300 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">
               <FontAwesomeIcon icon={faPlus} />
             </button>
             <div className='inline-block my-auto mx-3'>Create Group Chat</div>

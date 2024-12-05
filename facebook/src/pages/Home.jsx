@@ -5,7 +5,6 @@ import Post from '../components/Post'
 import NavbarLeft from '../components/NavbarLeft'
 import Contact from '../components/Contact'
 
-
 const Home = () => {
   const PostData = [
     {
@@ -36,6 +35,7 @@ const Home = () => {
         <div className="max-w-full mt-12 overflow-hidden hover:overflow-auto" style={{ gridColumn: '2 / 3' }}>
           <CreatePost />
           <Story />
+          {/* <TooltipExample /> */}
           {PostData.map((data) => ( <Post key={data.id} data={data} />))}
         </div>
         <div className="mt-12 mr-2 fixed right-0 top-0">
