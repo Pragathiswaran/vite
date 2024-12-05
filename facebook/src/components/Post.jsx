@@ -37,7 +37,7 @@ const Post = (props) => {
   return (
    <>
 
-<div className="flex flex-col group bg-white shadow-sm rounded-xl overflow-hidden hover:shadow-lg focus:outline-none focus:shadow-lg transition mt-2 w-full">
+<div data-preline="true" className="flex flex-col group bg-white shadow-sm rounded-xl overflow-hidden hover:shadow-lg focus:outline-none focus:shadow-lg transition mt-2 w-full">
   <div className="bg-white rounded-t-xl py-2 px-4 md:pt-3 md:pb-2 md:px-5 flex justify-between w-full">
     <div className="flex">
       <img className="inline-block size-[42px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" />

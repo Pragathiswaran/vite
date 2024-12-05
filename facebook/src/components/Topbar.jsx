@@ -10,10 +10,10 @@ const Topbar = () => {
     const [activeTab, setActiveTab] = useState();
 
     const NavIcons = [
-      { icon: faHome,routes: '/home'},
-      { icon: faYoutube,routes: '/videos'},
-      { icon: faUser,routes: '/groups'},
-      { icon: faGamepad,routes: '/games'},
+      { icon: faHome,routes: '/home',title:"Home"},
+      { icon: faYoutube,routes: '/videos',title:"Videos"},
+      { icon: faUser,routes: '/groups',title:"Groups"},
+      { icon: faGamepad,routes: '/games',title:"Games"},
       // { navs : [faGripVertical, faFacebookMessenger, faBell, faUser]}
     ]
 
@@ -37,9 +37,9 @@ const Topbar = () => {
             {NavIcons.map((tab, index) => {
              const tabIndex = index + 1;
               return (
-                <Link to={tab.routes} key={tabIndex}>
+                <Link to={tab.routes} key={tabIndex} className='hs-tooltip'>
                   <button type="button"
-                    className={`py-4 px-10 inline-flex items-center gap-x-2 border-b-[3px] text-xl whitespace-nowrap focus:outline-none rounded-t-lg
+                    className={`hs-tooltip-toggle py-4 px-10 inline-flex items-center gap-x-2 border-b-[3px] text-xl whitespace-nowrap focus:outline-none rounded-t-lg
                     ${
                       activeTab === tabIndex
                         ? 'hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 border-blue-600 text-blue-600'
@@ -48,6 +48,9 @@ const Topbar = () => {
                     id={`basic-tabs-item-${tabIndex}`} aria-selected={activeTab === tabIndex} data-hs-tab={`#basic-tabs-${tabIndex}`}
                     aria-controls={`basic-tabs-${tabIndex}`} role="tab"onClick={() => setActiveTab(tabIndex)}>
                       <FontAwesomeIcon icon={tab.icon} />
+                      <span className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible text-sm z-10 py-1 px-2 bg-gray-800 text-white rounded-md" role="tooltip">
+                        {tab.title}
+                      </span>
                   </button>
                 </Link>
             )})}

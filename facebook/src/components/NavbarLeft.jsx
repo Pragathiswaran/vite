@@ -63,32 +63,43 @@ const NavbarLeft = () => {
             icon:faHeart,
             title:'Fundraisers'
         },
-        {
-            id:12,
-            icon:faAngleDown,
-            title:'see some'
-        },
+        // {
+        //     id:12,
+        //     icon:faAngleDown,
+        //     title:'see some'
+        // },
     ]
   return (
     <>
-    <div className='w-[340px] h-screen overflow-y-hidden scrollbar-smooth scrollbar-thumb-rounded-lg scrollbar-hide scrollbar-thumb-gray-400 scrollbar-track-none hover:overflow-y-auto hover:scrollbar-thin'>
-        <nav className='flex flex-col justify-start ml-2 my-3'>
-            { icons.map((items) => (
-                <>
-                <ul className='w-full p-3 hover:bg-gray-200 rounded-l-lg mt-1' key={items.id}>
-                    <div className='inline-block text-lg '>
-                    <FontAwesomeIcon icon={items.icon} />
-                    <span className='ml-2 font-semibold'>{items.title}</span>
+        <div className='w-[340px] h-screen overflow-y-hidden scrollbar-smooth scrollbar-thumb-rounded-lg scrollbar-hide scrollbar-thumb-gray-400 scrollbar-track-none hover:overflow-y-auto hover:scrollbar-thin'>
+            <nav className='flex flex-col justify-start ml-2 my-3'>
+                { icons.map((items) => (
+                    <div className='text-lg w-full p-3 hover:bg-gray-200 rounded-l-lg mt-1' key={items.id}>
+                        <FontAwesomeIcon icon={items.icon} className='inline-flex justify-center items-center'/>
+                        <span className='ml-4 font-semibold'>{items.title}</span>
                     </div>
-                </ul>
-            </>
-            ))}
-            <footer className="text-gray-500 mt-3 text-[14px] mb-14 max-w-1/3">
-                Privacy . Terms . Advertising . Ad Choices . Cookies . More . Facebook © 2021
-            </footer>
-        </nav>
-    </div>
-    
+                ))}
+                <div id="hs-show-hide-collapse-heading" className="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-show-hide-collapse">
+                    { icons.map((items) => (
+                        <div className='text-lg w-full p-3 hover:bg-gray-200 rounded-l-lg mt-1' key={items.id}>
+                            <FontAwesomeIcon icon={items.icon} className='inline-flex justify-center items-center'/>
+                            <span className='ml-4 font-semibold'>{items.title}</span>
+                        </div>
+                    ))}
+                </div>
+                <button type="button" className='hs-collapse-toggle text-lg w-full p-3 hover:bg-gray-200 rounded-l-lg mt-1 inline-flex justify-start items-center'
+                    id="hs-show-hide-collapse" aria-expanded="false" 
+                    aria-controls="hs-show-hide-collapse-heading" data-hs-collapse="#hs-show-hide-collapse-heading"
+                >
+                    <FontAwesomeIcon icon={faAngleDown} className='inline-flex justify-center items-center'/>
+                    <span className="ml-4 font-semibold hs-collapse-open:hidden">See more</span>
+                    <span className="ml-4 font-semibold hs-collapse-open:block hidden">See less</span>
+                </button>
+                <footer className="text-gray-500 mt-3 text-[14px] mb-14 max-w-1/3">
+                    Privacy . Terms . Advertising . Ad Choices . Cookies . More . Facebook © 2021
+                </footer>
+            </nav>
+        </div>
     </>
   )
 }
