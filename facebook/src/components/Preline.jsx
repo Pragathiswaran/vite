@@ -9,7 +9,7 @@ const Preline = () => {
   }, []);
 
   useEffect(() => {
-    HSStaticMethods.autoInit(['carousel', 'overlay', 'tab', 'tooltip', 'popover']);
+    HSStaticMethods.autoInit(['carousel', 'overlay', 'tooltip', 'popover', 'collapse', 'dropdown', 'combobox']);
   }, [location.pathname]);
 
   return <></>;

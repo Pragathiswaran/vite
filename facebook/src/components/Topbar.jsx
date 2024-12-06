@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faGamepad, faUser, faBell, faGripVertical } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faFacebookMessenger, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faHome, faGamepad, faUser, faBell, faGripVertical, faMagnifyingGlass  } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faFacebookMessenger, faYoutube} from "@fortawesome/free-brands-svg-icons";
 import { Link, useLocation } from 'react-router-dom';
 
 const Topbar = () => {
 
     const location = useLocation(); 
     const [activeTab, setActiveTab] = useState();
+    // const [Focus, setFocus] = useState(true);
 
     const NavIcons = [
       { icon: faHome,routes: '/home',title:"Home"},
@@ -22,6 +23,26 @@ const Topbar = () => {
       setActiveTab(currentIndex);
     },[location.pathname])
 
+  const SearchBar = () => {
+    const [Focus, setFocus] = useState(true); // Declare the Focus state
+    const handleFocus = () => setFocus(false);  // Set Focus explicitly to true
+    const handleBlur = () => setFocus(true);
+    return (
+      <> 
+        <div className="max-w-sm space-y-3 relative" >
+          <div className="relative">
+            <input type="text" className={`${Focus ? 'placeholder:translate-x-6' : 'placeholder:translate-x-0'} placeholder:transition-all placeholder:duration-300 py-2.5 px-4 inline-flex justify-start w-60
+             bg-gray-100 border-transparent rounded-full text-sm outline-none disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-200 dark:border-transparent dark:text-neutral-500 dark:placeholder-neutral-500 dark:focus:ring-neutral-600`} 
+              placeholder="Search Facebook" onFocus={handleFocus} onBlur={handleBlur}/>
+              <div className={`${Focus ? 'opacity-100' : 'opacity-0'} transition-all duration-400 ease-in absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none`}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="text-neutral-500" />
+              </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <div className="w-full bg-white-0 shadow-md px-1 fixed top-0 z-50">
@@ -29,9 +50,7 @@ const Topbar = () => {
           <nav className="flex gap-x-2 justify-between" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
             <div className='flex items-center w-1/4'>
               <FontAwesomeIcon icon={faFacebook} className="text-3xl text-blue-600 pr-2" />
-              <div className="max-w-34">
-                <input type="text" className="py-3 px-4 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-300 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 focus:outline-none" placeholder="This is placeholder" />
-              </div>
+              <SearchBar />
             </div>
           <div className='w-1/2 flex justify-center'>
             {NavIcons.map((tab, index) => {
@@ -39,7 +58,7 @@ const Topbar = () => {
               return (
                 <Link to={tab.routes} key={tabIndex} className='hs-tooltip'>
                   <button type="button"
-                    className={`hs-tooltip-toggle py-4 px-10 inline-flex items-center gap-x-2 border-b-[3px] text-xl whitespace-nowrap focus:outline-none rounded-t-lg
+                    className={`hs-tooltip-toggle py-4 max-sm:hidden sm:px-3 md:block md:px-6 lg:px-12 inline-flex items-center gap-x-2 border-b-[3px] text-xl whitespace-nowrap focus:outline-none rounded-t-lg
                     ${
                       activeTab === tabIndex
                         ? 'hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 border-blue-600 text-blue-600'

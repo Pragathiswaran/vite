@@ -67,13 +67,13 @@ const Videos = () => {
   return (
     <>
       <div className='relative grid grid-cols-[1fr,3fr] mt-14'>
-        <div className='fixed left-0 w-1/4 h-full bg-white-0 shadow-r px-3'>
+        <div className='fixed left-0 w-1/4 h-full mt-1.5 bg-white-0 shadow-r px-3'>
           <SideBar />
         </div>
-        <div className='relative ml-96 scrollbar-smooth'>
-        <div className='mx-52 w-[700px]'>
-            {PostData.map((data) => ( <Post key={data.id} data={data} />))}
-        </div>
+        <div className='relative ml-96 mt-3 scrollbar-smooth'>
+          <div className='mx-52 w-[700px]'>
+              {PostData.map((data) => ( <Post key={data.id} data={data} />))}
+          </div>
         </div>
       </div>
     </>

@@ -60,9 +60,9 @@ const CreatePost = () => {
         placeholder="What is on your mind?" ></textarea>
        </div>
       </div>
-      <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t">
-        <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-          Save changes
+      <div className="flex items-center gap-x-2 py-3 px-4 border-t">
+        <button type="button" class="py-2 px-3 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+          Post
         </button>
       </div>
     </div>

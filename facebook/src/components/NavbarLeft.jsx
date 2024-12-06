@@ -75,7 +75,7 @@ const NavbarLeft = () => {
             <nav className='flex flex-col justify-start ml-2 my-3'>
                 { icons.map((items) => (
                     <div className='text-lg w-full p-3 hover:bg-gray-200 rounded-l-lg mt-1' key={items.id}>
-                        <FontAwesomeIcon icon={items.icon} className='inline-flex justify-center items-center'/>
+                        <FontAwesomeIcon icon={items.icon} className='mx-auto'/>
                         <span className='ml-4 font-semibold'>{items.title}</span>
                     </div>
                 ))}
