@@ -25,6 +25,15 @@ const Home = () => {
       comments: 5,
       shares: 2
     },
+    {
+      id:3,
+      username:'Meena',
+      thumbnails:'',
+      time:'28 November 15:28',
+      likes: 1,
+      comments: 5,
+      shares: 2
+    },
   ]
   return (
     <>

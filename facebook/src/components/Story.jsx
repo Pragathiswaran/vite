@@ -44,7 +44,7 @@ const Story = () => {
                 </button>
                 <div className="flex flex-col w-full h-full rounded-xl overflow-hidden relative">
                   <img
-                    className="w-full h-full rounded-t-xl object-cover transform transition duration-500 ease-out hover:scale-110"
+                    className="w-full h-full rounded-xl object-cover transform transition duration-500 ease-out hover:scale-110"
                     src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
                   />
                 </div>
