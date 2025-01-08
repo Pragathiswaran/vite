@@ -19,9 +19,6 @@ const Story = () => {
     <div className="relative h-52 -mx-1">
       <div className="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 cursor-grab transition-transform duration-700 hs-carousel-dragging:transition-none hs-carousel-dragging:cursor-grabbing">
         <div className="hs-carousel-slide px-1 relative"> 
-          <button type="button" className="absolute flex shrink-0 justify-center items-center mt-2 ml-2 gap-2 size-[36px] text-sm font-medium rounded-full border-3 border-blue-500 bg-white text-blue-600 focus:outline-none disabled:opacity-50 disabled:pointer-events-none z-20">
-            <FontAwesomeIcon icon={faUser} />
-          </button>
           <div className="flex flex-col w-full h-full rounded-x overflow-hidden relative">
             <img
               className="w-full h-full rounded-t-xl object-cover transform transition duration-500 ease-out hover:scale-110"
@@ -47,7 +44,7 @@ const Story = () => {
                 </button>
                 <div className="flex flex-col w-full h-full rounded-xl overflow-hidden relative">
                   <img
-                    className="w-full h-full rounded-t-xl object-cover transform transition duration-500 ease-out hover:scale-110"
+                    className="w-full h-full rounded-xl object-cover transform transition duration-500 ease-out hover:scale-110"
                     src="https://images.unsplash.com/photo-1680868543815-b8666dba60f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&q=80"
                   />
                 </div>

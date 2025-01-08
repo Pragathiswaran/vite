@@ -17,10 +17,24 @@ export default {
       },
       boxShadow:{
         'r' : '4px 0 8px rgba(0,0,0,0.1)',
-      }
+      },
+      keyframes: {
+        fadeIn: {
+            '0%': { opacity: '0', transform: 'translateY(10px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+    },
+    animation: {
+        fadeIn: 'fadeIn 0.3s ease-in-out',
+    },
+    spacing: {
+      '-popover': '-100%', // Negative values for positioning
+      'popover-behind' : '-100%',
+  },
     },
   },
   plugins: [
+    require('@tailwindcss/forms')({strategy:"class"}),
     require('preline/plugin'),
     require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),  
   ],
