@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 const mongoose = require('mongoose');
 
-app.use(express.json())
+app.use(express.json())   
 app.use(express.urlencoded({extended:true}))
 app.use((req, res, next) => {
     res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
   });
   
-app.get('/',(req,res)=> res.send('hello world'));
+// app.get('/',(req,res)=> res.send('hello world'));
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log('connected to mongodb'))

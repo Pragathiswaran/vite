@@ -12,6 +12,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const loginSchema = z.object({
         email: z.string().email({ message: 'Invalid email address' }),
         password: z.string().min(8, { message: 'Password must be at least 8 characters' })
@@ -29,7 +30,10 @@ const Login = () => {
     const mutation = useMutation({
         mutationFn: loginUser,
         onSuccess: (data) => {
-            alert('Login successful!');
+            // alert('Login successful!');
+            navigate('/');
+            console.log(data.accessToken);
+            sessionStorage.setItem('token', data.accessToken);
         },
         onError: (error) => {
            if(error.response.status === 404){
@@ -41,7 +45,7 @@ const Login = () => {
         }
     });
 
-    const navigate = useNavigate();
+    
     const Login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
            try {
@@ -49,8 +53,11 @@ const Login = () => {
             const response = await axios.post('http://localhost:8000/login', { token:credentials });
 
             if(response.status === 200){
+                sessionStorage.setItem('token', response.data.accessToken);
                 navigate('/');
-                // alert('Login successful!');
+                alert('Login successful!');
+                console.log(response);
+               
             }
 
            } catch (error) {
