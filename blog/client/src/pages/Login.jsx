@@ -9,6 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useGoogleLogin } from '@react-oauth/google';
 
+axios.defaults.withCredentials = true
 
 const Login = () => {
 
@@ -23,22 +24,21 @@ const Login = () => {
     });
 
     const loginUser = async (userData) => {
-        const response = await axios.post('http://localhost:8000/login', userData);
+        const response = await axios.post('http://localhost:8000/login', userData, { 
+            headers: { 'Content-Type': 'application/json' },
+        });
         return response.data;
     }
 
     const mutation = useMutation({
         mutationFn: loginUser,
         onSuccess: (data) => {
-            // alert('Login successful!');
             navigate('/');
-            console.log(data.accessToken);
-            sessionStorage.setItem('token', data.accessToken);
+            console.log(data.cookie);
         },
         onError: (error) => {
            if(error.response.status === 404){
                setError('email', { message: 'Invalid email or password' });
-            // alert('email', { message: 'Invalid email or password' });
            } else {
                 alert('Login failed: ' + error.response?.data?.message || error.message);
            }
@@ -53,11 +53,8 @@ const Login = () => {
             const response = await axios.post('http://localhost:8000/login', { token:credentials });
 
             if(response.status === 200){
-                sessionStorage.setItem('token', response.data.accessToken);
                 navigate('/');
                 alert('Login successful!');
-                console.log(response);
-               
             }
 
            } catch (error) {

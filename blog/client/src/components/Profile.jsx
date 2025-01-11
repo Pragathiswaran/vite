@@ -3,49 +3,22 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserLarge } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { UseContext } from '../context/UserContext';
 
 const Profile = () => {
+  
   const navigate = useNavigate();
-
-  // Fetch user profile if logged in
-  const fetchProfile = async () => {
-    const token = sessionStorage.getItem('token');
-    console.log(token)
-    if (!token) {
-      // navigate('/login');
-      return null;
-      // return null; // Return null if no token
-    }
-
-    try {
-      const response = await axios.get('http://localhost:8000/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response);
-      return response; 
-    } catch (error) {
-      return null; 
-    }
-  };
-
-  const { data: user, isLoading } = useQuery({
-    queryKey: ['profile'], 
-    queryFn: fetchProfile, 
-    retry: false, 
-  });
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const {user}  = useContext(UseContext);
 
   const logoutHandler = () => {
-    sessionStorage.removeItem('token');
-    navigate('/login');
-    console.log('Logged out successfully');
+   
   }
 
+  const checkHandler = () => {
+    console.log('Button ckecked!!')
+    alert(user.data.username);
+  }
   return (
     <div className='container mx-auto mt-32'>
       <h1 className='text-3xl font-bold mb-14'>Profile</h1>
@@ -53,16 +26,25 @@ const Profile = () => {
         <div className='border-2 p-4 rounded-full border-gray-300'>
           <FontAwesomeIcon icon={faUserLarge} className='w-14 h-14' />
         </div>
-        <div className='text-gray-600'>
-          <h2 className='text-xl font-semibold'> {user.data.username}</h2>
-          <h2 className='text-xl font-semibold'> {user.data.email}</h2>
-        </div>
+        {
+          user && user.data && user.data.username && user.data.username.length > 0 ? (
+            <div className='text-gray-600'>
+              <h2 className='text-xl font-semibold'> {user.data.username}</h2>
+              <h2 className='text-xl font-semibold'> {user.data.email}</h2>
+            </div>
+          ) : (
+            <div className='text-gray-600'>
+              <h2 className='text-xl font-semibold'>Not Found!!!</h2>
+            </div>
+          )
+        }
       </div>
       <div className='mt-20 flex gap-x-12'>
           <button className='bg-black text-white p-3 font-semibold'>
-            <Link to="./createblog" state={user.data.username}>Create Post</Link>
+            <Link to="./createblog" >Create Post</Link>
           </button>
-          <button className='bg-black text-white p-3 font-semibold' onClick={logoutHandler}>Log Out</button>
+          <button type="button"
+          className='bg-black text-white p-3 font-semibold' onClick={checkHandler}>Log Out</button>
       </div>
     </div>
   );
