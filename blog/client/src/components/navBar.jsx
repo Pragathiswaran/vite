@@ -10,12 +10,15 @@ function navBar() {
   
   const {user} = useContext(UseContext);
   const location = useLocation();
-  const [showProfile, setShowProfile] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setShowProfile( user ? true : false);
-    // alert('state changed');
+   if(user){
+    setIsLogin(true)
+   } else {
+    setIsLogin(false)
+   }
   }, [location.pathname]);
 
   return (
@@ -29,7 +32,7 @@ function navBar() {
         </section>
         <section>
           {
-            showProfile ? <FontAwesomeIcon icon={faUserLarge} className="w-7 h-7" 
+            isLogin ? <FontAwesomeIcon icon={faUserLarge} className="w-7 h-7" 
             onClick={() => navigate('/profile')}/> 
               : (
                 <div>

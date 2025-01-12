@@ -34,7 +34,7 @@ const Login = () => {
         mutationFn: loginUser,
         onSuccess: (data) => {
             navigate('/');
-            console.log(data.cookie);
+            console.log(data);
         },
         onError: (error) => {
            if(error.response.status === 404){
