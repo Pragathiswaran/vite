@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const blogSchema = z.object({
   blogName: z.string().min(3, 'Blog name must be at least 3 characters long'),
@@ -13,17 +15,20 @@ const blogSchema = z.object({
 });
 
 const BlogForm = () => {
+
+  const { user }  = useContext(UserContext);
   const location = useLocation();
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: zodResolver(blogSchema),
   });
 
   const createBlog = async (data) => {
-    const response = await axios.post('http://localhost:8000/profile/createblog', {
+    const response = await axios.post('/profile/createblog', {
       blogname: data.blogName,
       blog: data.blog,
-      author: data.author, 
+      author: user.username, 
     });
+    
     console.log(response);
     return response.data;
   };

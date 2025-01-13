@@ -4,29 +4,23 @@ import { useQuery } from '@tanstack/react-query';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserLarge } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useState } from 'react';
-import { UseContext } from '../context/UserContext';
+import { UserContext } from '../context/UserContext';
+import Cookies from 'js-cookie';
 
 const Profile = () => {
   
-  // const navigate = useNavigate();
-  const {user}  = useContext(UseContext);
-  const Location = useLocation();
-  const navigate = useNavigate()
-  const [showProfile, setShowProfile] = useState(false)
-  const checkHandler = () => {
-    console.log('Button ckecked!!')
-    alert(user.data.username);
+  const {user, setUser}  = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const LogoutHandler = () => {
+    // setUser(null);
+    navigate('/login')
+    Cookies.remove('token');
   }
 
-  useEffect(()=>{
-    if(user){
-      setShowProfile(true)
-    } else{
-      setShowProfile(false)
-      navigate('/login')
-    }
-    console.log(user)
-  },[Location.pathname])
+  const CheckDataHandler = () => {
+    console.log(import.meta.env.VITE_API_URL)
+  }
   return (
     <div className='container mx-auto mt-32'>
       <h1 className='text-3xl font-bold mb-14'>Profile</h1>
@@ -35,10 +29,10 @@ const Profile = () => {
           <FontAwesomeIcon icon={faUserLarge} className='w-14 h-14' />
         </div>
         {
-          showProfile ? (
+          user ? (
             <div className='text-gray-600'>
-              <h2 className='text-xl font-semibold'> {user.data.username}</h2>
-              <h2 className='text-xl font-semibold'> {user.data.email}</h2>
+              <h2 className='text-xl font-semibold'> {user.username}</h2>
+              <h2 className='text-xl font-semibold'> {user.email}</h2>
             </div>
           ) : (
             <div className='text-gray-600'>
@@ -52,7 +46,7 @@ const Profile = () => {
             <Link to="./createblog" >Create Post</Link>
           </button>
           <button type="button"
-          className='bg-black text-white p-3 font-semibold' onClick={checkHandler}>Log Out</button>
+          className='bg-black text-white p-3 font-semibold' onClick={CheckDataHandler}>Log Out</button>
       </div>
     </div>
   );

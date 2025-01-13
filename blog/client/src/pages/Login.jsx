@@ -24,7 +24,7 @@ const Login = () => {
     });
 
     const loginUser = async (userData) => {
-        const response = await axios.post('http://localhost:8000/login', userData, { 
+        const response = await axios.post('/login', userData, { 
             headers: { 'Content-Type': 'application/json' },
         });
         return response.data;
@@ -34,13 +34,13 @@ const Login = () => {
         mutationFn: loginUser,
         onSuccess: (data) => {
             navigate('/');
-            console.log(data);
+            console.log(data)
         },
         onError: (error) => {
            if(error.response.status === 404){
                setError('email', { message: 'Invalid email or password' });
            } else {
-                alert('Login failed: ' + error.response?.data?.message || error.message);
+                console.error('Login failed: ' + error.response?.data?.message || error.message);
            }
         }
     });
@@ -50,7 +50,7 @@ const Login = () => {
         onSuccess: async (tokenResponse) => {
            try {
             const credentials = tokenResponse.access_token;
-            const response = await axios.post('http://localhost:8000/login', { token:credentials });
+            const response = await axios.post('login', { token:credentials });
 
             if(response.status === 200){
                 navigate('/');

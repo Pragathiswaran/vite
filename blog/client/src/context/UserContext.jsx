@@ -1,33 +1,35 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-const context = createContext({});
+export const UserContext = createContext({});
 
-const UserContext = ({children}) => {
+export const UserContextProvider = ({children}) => {
    
-  const location = useLocation();
-  const Navigate = useNavigate();
+  const Location = useLocation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     if(!user){
       axios.get('http://localhost:8000/profile',{ withCredentials: true}).then(({data})=>{
         setUser(data)
-      }).catch((data)=>{
-        if(data.status === 401){
-          setUser(null)
+        console.log('Data Fetched',data)
+      }).catch((err)=>{
+        if(err.response.status === 401){
+          // setUser(null)
+          console.log('User not found')
         }
       })
     }
-  }, [location.pathname]); 
+
+    console.log('UserContextProvider', user)
+  }, [Location.pathname]); 
 
   return (
-    <context.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
-    </context.Provider>
+    </UserContext.Provider>
   );
 };
 
-export { UserContext, context as UseContext };
 
