@@ -1,14 +1,12 @@
 import React from 'react'
-// import {Button, Navbar} from '@material-tailwind/react'
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
-function home() {
+const Home = () => {
 
   const fetchBlog = async () => {
-    const response = await axios.get('http://localhost:8000/');
-    console.log(response);
+    const response = await axios.get('/',{ withCredentials: true });
     return response.data;
   }
 
@@ -54,4 +52,4 @@ function home() {
   )
 }
 
-export default home
+export default Home

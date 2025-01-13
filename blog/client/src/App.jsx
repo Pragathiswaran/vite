@@ -1,18 +1,24 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Navbar from './components/navBar'
-import Home from './pages/home'
+import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Profile from './components/Profile'
+import Profile from './pages/Profile'
 import SingleBlog from './pages/SingleBlog'
 import BlogForm from './components/BlogForm'
+import NavBar from './components/NavBar'
+import axios from 'axios'
+import { UserContextProvider } from './context/UserContext'
 
-function App() {
+const App = () => {
 
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+  axios.defaults.withCredentials = true;
+  
   return (
     <>
-      <Navbar />
+    <UserContextProvider>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
@@ -21,6 +27,8 @@ function App() {
         <Route path='/post/:id' element={<SingleBlog />} />
         <Route path='/profile/createblog' element={<BlogForm />} />
       </Routes>
+    </UserContextProvider>
+      
     </>
   )
 }

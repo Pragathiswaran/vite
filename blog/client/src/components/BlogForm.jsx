@@ -13,13 +13,15 @@ const blogSchema = z.object({
 });
 
 const BlogForm = () => {
+
+
   const location = useLocation();
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: zodResolver(blogSchema),
   });
 
   const createBlog = async (data) => {
-    const response = await axios.post('http://localhost:8000/profile/createblog', {
+    const response = await axios.post('/profile/createblog', {
       blogname: data.blogName,
       blog: data.blog,
       author: data.author, 

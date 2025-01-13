@@ -11,7 +11,8 @@ import { Link, useNavigate} from 'react-router-dom';
 
 
 const RegisterForm = () => {
-  // Zod Schema for form validation
+  
+  const Navigate = useNavigate();
   const schema = z.object({
     username: z.string().min(3, 'Username must be at least 3 characters long'),
     email: z.string().email('Invalid email address'),
@@ -24,61 +25,56 @@ const RegisterForm = () => {
       .regex(/[@$!%*?&]/, 'Password must contain at least one special character'),
   });
 
-  // react-hook-form setup
   const { register, handleSubmit, setError, formState: { errors },} = useForm({
     resolver: zodResolver(schema),
   });
 
-  // Axios API call to register user
   const registerUser = async (userData) => {
-    const response = await axios.post('http://localhost:8000/register', userData);
+    const response = await axios.post('/register', userData);
     return response.data;
   };
 
-  // useMutation to handle API request
-    const mutation = useMutation({
-      mutationFn: registerUser,
-      onSuccess: () => {
-        alert('Registration successful!');
-      },
-      onError: (error) => {
-        if(error.response.status === 409){
-          alert('Email already exists!')
-        }else{
-          alert('Registration failed: ' + error.response?.data?.message || error.message);
-        }
-      },
-    });
-
-    const navigate = useNavigate();
-    
-    const login = useGoogleLogin({
-      onSuccess: async (tokenResponse) => {
-        try{
-          const credentials = tokenResponse.access_token;
-          const response = await axios.post('http://localhost:8000/register',{ token:credentials} );
-
-          if(response.status === 201){
-            alert('register successful!');
-          }
-
-        }catch(err){
-          if(err.response.status === 409){
-            alert('Email already exists!')
-            }else{
-              alert('Login failed: ' + err.response?.data?.message || err.message);
-              }
-        }
-      },
-      onError: (error) => {
-        console.error(error);
-        alert('Google login error');
+  const mutation = useMutation({
+    mutationFn: registerUser,
+    onSuccess: () => {
+      console.info('Registration successful!');
+    },
+    onError: (error) => {
+      if(error.response.status === 409){
+        setError('email', { message: 'Email already exists' });
+      }else{
+        console.error('Registration failed: ' + error.response?.data?.message || error.message);
       }
-    })
+    },
+  });
+    
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try{
+        const credentials = tokenResponse.access_token;
+        const response = await axios.post('/register',{ token:credentials} );
 
-  // Form submission handler
+        if(response.status === 201){
+          console.info('Login successful!');
+          Navigate('/login');
+        }
+
+      }catch(err){
+        if(err.response.status === 409){
+          alert('Email already exists!')
+          setError('email', { message: 'Email already exists' });
+        }else{
+          alert('Login failed: ' + err.response?.data?.message || err.message);
+        }
+      }
+    },
+    onError: (error) => {
+      console.error(error);
+    }
+  })
+
   const onSubmit = (data) => {
-    mutation.mutate(data);  // Trigger mutation
+    mutation.mutate(data);  
   };
 
   return (
