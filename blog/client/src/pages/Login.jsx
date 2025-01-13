@@ -9,7 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useGoogleLogin } from '@react-oauth/google';
 
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
 
 const Login = () => {
 

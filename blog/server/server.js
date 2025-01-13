@@ -1,6 +1,7 @@
 const express = require('express');
-const dotenv = require('dotenv').config({ path: require('path').resolve(__dirname, '.env') });
+const dotenv = require('dotenv').config({ path: require('path').resolve(__dirname, '.env.development') });
 const cors = require('cors');
+const moment = require('moment');
 const cookieParser = require('cookie-parser');
 const { authRouter, blogRouter } = require('./routes');
 
@@ -29,5 +30,6 @@ mongoose.connect(process.env.MONGO_URL)
 app.use('/', authRouter);
 app.use('/', blogRouter);
 
+console.log(moment().format('h:mm A'));
 // Start the server
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));

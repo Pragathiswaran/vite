@@ -10,6 +10,7 @@ import Cookies from 'js-cookie';
 const Profile = () => {
   
   const {user, setUser}  = useContext(UserContext);
+  const [edit, setEdit] = useState(false);
   const navigate = useNavigate();
 
   const LogoutHandler = () => {
@@ -29,7 +30,14 @@ const Profile = () => {
           <FontAwesomeIcon icon={faUserLarge} className='w-14 h-14' />
         </div>
         {
-          user ? (
+          edit ? (
+            <div className=''>
+              <form className='flex flex-col gap-y-4 w-96'>
+                <input type="text" className='px-3 py-2 border-2' value={user.username}/>
+                <input type="text" className='px-3 py-2 border-2' value={user.email}/>
+              </form>
+          </div>
+          ) : user ? (
             <div className='text-gray-600'>
               <h2 className='text-xl font-semibold'> {user.username}</h2>
               <h2 className='text-xl font-semibold'> {user.email}</h2>
@@ -47,6 +55,9 @@ const Profile = () => {
           </button>
           <button type="button"
           className='bg-black text-white p-3 font-semibold' onClick={CheckDataHandler}>Log Out</button>
+          <button className='bg-black text-white p-3 font-semibold'
+          onClick={() => setEdit(!edit)}
+          >{!edit ? 'Edit' : 'submit'}</button>
       </div>
     </div>
   );

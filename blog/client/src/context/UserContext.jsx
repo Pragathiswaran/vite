@@ -11,9 +11,9 @@ export const UserContextProvider = ({children}) => {
 
   useEffect(() => {
     if(!user){
-      axios.get('http://localhost:8000/profile',{ withCredentials: true}).then(({data})=>{
+      axios.get('/profile',{ withCredentials: true}).then(({data})=>{
         setUser(data)
-        console.log('Data Fetched',data)
+        // console.log('Data Fetched',data)
       }).catch((err)=>{
         if(err.response.status === 401){
           // setUser(null)
@@ -22,7 +22,7 @@ export const UserContextProvider = ({children}) => {
       })
     }
 
-    console.log('UserContextProvider', user)
+    // console.log('UserContextProvider', user)
   }, [Location.pathname]); 
 
   return (

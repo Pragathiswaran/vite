@@ -1,4 +1,5 @@
 const Blog = require('../models/blog');
+const moment = require('moment');
 
 const getBlogPosts = async (req,res) => {
     try{
@@ -30,12 +31,14 @@ const createBlog = async (req,res) => {
         }
         
         const newBlog = await Blog.create({
-            blogname,
-            blog,
-            author
+            blogname : blogname,
+            blog : blog,
+            author : author,
+            date : moment().format('MMM Do YYYY'),
+            time : moment().format('h:mm A')
         });
         
-        return res.status(201).json({message:newBlog});
+        return res.status(200).json({message:newBlog});
 
     } catch (error) {
         console.log(error)
@@ -43,4 +46,35 @@ const createBlog = async (req,res) => {
     }
 }
 
-module.exports = { getBlogPosts, getSingleBlog, createBlog };
+const createComment = async (req,res) => {
+    try {
+        const { comment, username, postid } = req.body;
+
+        if(!comment || !username || !postid){
+            return res.status(400).json({error:"Please fill all the fields"})
+        }
+
+        const newComment = await Blog.findByIdAndUpdate(postid, {
+            $push: {
+                comments: {
+                    comment: comment,
+                    name: username,
+                    date: moment().format('MMM Do YYYY'),
+                    time: moment().format('h:mm A')
+                }
+            }
+        }, {new:true});
+
+        if(!newComment){
+            return res.status(404).json({error:"Post not found"})
+        }
+
+        return res.status(201).json({message:newComment});
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({error:error.message})
+    }
+}
+
+module.exports = { getBlogPosts, getSingleBlog, createBlog, createComment };
