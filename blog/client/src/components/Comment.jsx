@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import Cookies from 'js-cookie';
 
 const commentSchema = z.object({
   comment : z.string().min(3, 'Comment must be at least 3 characters long')
@@ -46,14 +47,15 @@ const Comment = () => {
   })
 
   const submitComment = (data) => {
-    mutation.mutate(data);
-    console.log(data.comment);
-   if(user === null){
-    console.log('no user data');
-   }
 
-  //  alert(username);
-    console.log(id)
+    const userToken = Cookies.get('token');
+
+    if(userToken){
+      mutation.mutate(data);
+    } else {
+      alert('You need to be logged in to comment');
+    }
+
     reset();
   }
 

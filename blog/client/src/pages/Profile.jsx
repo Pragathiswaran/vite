@@ -14,14 +14,14 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const LogoutHandler = () => {
-    // setUser(null);
-    navigate('/login')
     Cookies.remove('token');
+    navigate('/login')
   }
 
   const CheckDataHandler = () => {
     console.log(import.meta.env.VITE_API_URL)
   }
+  
   return (
     <div className='container mx-auto mt-32'>
       <h1 className='text-3xl font-bold mb-14'>Profile</h1>

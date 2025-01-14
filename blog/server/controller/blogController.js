@@ -1,5 +1,7 @@
 const Blog = require('../models/blog');
 const moment = require('moment');
+const multer = require('multer');
+const upload = multer({ dest: '../../clinet/public/blog' });
 
 const getBlogPosts = async (req,res) => {
     try{
@@ -25,17 +27,23 @@ const getSingleBlog = async (req,res) => {
 const createBlog = async (req,res) => {
     try {
         const { blogname, blog, author } = req.body;
+        const blogImage = req.file;
 
         if(!blogname || !blog || !author){
             return res.status(400).json({error:"Please fill all the fields"})
         }
         
+        if(!blogImage){
+            return res.status(400).json({error:"Please upload an image"})
+        }
+
         const newBlog = await Blog.create({
             blogname : blogname,
             blog : blog,
             author : author,
             date : moment().format('MMM Do YYYY'),
-            time : moment().format('h:mm A')
+            time : moment().format('h:mm A'),
+            blogImage : blogImage.filename
         });
         
         return res.status(200).json({message:newBlog});
