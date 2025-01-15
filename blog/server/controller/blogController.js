@@ -32,7 +32,7 @@ const createBlog = async (req,res) => {
         if(!blogname || !blog || !author){
             return res.status(400).json({error:"Please fill all the fields"})
         }
-        
+
         if(!blogImage){
             return res.status(400).json({error:"Please upload an image"})
         }
@@ -43,7 +43,7 @@ const createBlog = async (req,res) => {
             author : author,
             date : moment().format('MMM Do YYYY'),
             time : moment().format('h:mm A'),
-            blogImage : blogImage.filename
+            imageUrl : blogImage.filename
         });
         
         return res.status(200).json({message:newBlog});

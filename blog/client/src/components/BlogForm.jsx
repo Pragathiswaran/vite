@@ -25,11 +25,16 @@ const BlogForm = () => {
   });
 
   const createBlog = async (data) => {
-    const response = await axios.post('/profile/createblog', {
+    const response = await axios.post('/profile/createblog',
+       {
       blogname: data.blogName,
       blog: data.blog,
       author: user.username,
       blogImage: data.blogImage[0] 
+    },{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
     });
     
     console.log(response);
@@ -44,7 +49,7 @@ const BlogForm = () => {
     },
     onError: (error) => {
       alert("Failed to create blog");
-      console.log('Failed to create blog: ' + error.response?.data?.message || error.message);
+      console.log('Failed to create blog: ' + error);
     },
   });
 
