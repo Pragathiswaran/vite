@@ -28,7 +28,7 @@ const SingleBlog = () => {
     <div className='mb-20 mx-40'>
         <div className='mt-32 '>
             <h1 className='text-center text-3xl font-semibold my-10'>{blog.blogname}</h1>
-            <img src="../blogs/download.jpg" alt="mern stack" className='w-[800px] mx-auto my-10'/>
+            <img src={`../blogs/${blog.imageUrl}`} alt="mern stack" className='max-w-[700px] mx-auto my-10'/>
             <p className='w-full'>{blog.blog}</p>
         </div>
         <div className='mt-20 '>

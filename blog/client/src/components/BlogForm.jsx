@@ -5,27 +5,38 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
+import { useContext } from 'react';
+import { UserContext }  from '../context/UserContext';
+import Cookies from 'js-cookie'
+
 
 const blogSchema = z.object({
   blogName: z.string().min(3, 'Blog name must be at least 3 characters long'),
-  author: z.string().min(3, 'Author name must be at least 3 characters long'),
   blog: z.string().min(10, 'Blog content must be at least 10 characters long'),
+  blogImage: z.any().refine((file) => file && file.length > 0, 'Please upload an image'),
 });
 
 const BlogForm = () => {
 
-
+  const { user } = useContext(UserContext);
   const location = useLocation();
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: zodResolver(blogSchema),
   });
 
   const createBlog = async (data) => {
-    const response = await axios.post('/profile/createblog', {
+    const response = await axios.post('/profile/createblog',
+       {
       blogname: data.blogName,
       blog: data.blog,
-      author: data.author, 
+      author: user.username,
+      blogImage: data.blogImage[0] 
+    },{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      }
     });
+    
     console.log(response);
     return response.data;
   };
@@ -38,18 +49,23 @@ const BlogForm = () => {
     },
     onError: (error) => {
       alert("Failed to create blog");
-      console.log('Failed to create blog: ' + error.response?.data?.message || error.message);
+      console.log('Failed to create blog: ' + error);
     },
   });
 
   const onSubmit = (data) => {
+    const token = Cookies.get('token');
+    if (!token) {
+      alert('Please login to create a blog');
+      return;
+    }
     mutation.mutate(data);
   };
 
   return (
     <div className="max-w-xl mx-auto mt-32 p-5 bg-gray-100 shadow-lg rounded-md">
       <h1 className="text-2xl font-bold mb-5">Create a New Blog</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" encType='multipart/form-data'>
         {/* Blog Name */}
         <div>
           <label htmlFor="blogName" className="block font-semibold">
@@ -65,22 +81,18 @@ const BlogForm = () => {
             <p className="text-red-500 text-sm">{errors.blogName.message}</p>
           )}
         </div>
-
-        {/* Author Name */}
         <div>
-          <label htmlFor="author" className="block font-semibold">
-            Author
-          </label>
-          <input
-            type="text"
-            id="author"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-            {...register('author')}
-          />
-          {errors.author && (
-            <p className="text-red-500 text-sm">{errors.author.message}</p>
-          )}
-        </div>
+            <label htmlFor="blogImage" className="block font-semibold">
+              Blog Image
+            </label>
+            <input type="file" name="blogImage" id="blogImage" 
+              className="w-full bg-white border-2 p-2 rounded-md"
+              {...register('blogImage')} 
+            />
+            {errors.blogImage && (
+              <p className="text-red-500 text-sm">{errors.blogImage.message}</p>
+            )}
+          </div>
 
         {/* Blog Content */}
         <div>

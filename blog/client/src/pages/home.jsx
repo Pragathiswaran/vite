@@ -33,8 +33,8 @@ const Home = () => {
             <Link to={`/post/${post._id}`} className='flex w-3/4 border p-2 mt-4' key={post._id}>
               <>
               <div className='p-2'>
-                <img src="./blogs/download.jpg"
-                alt="mern stack" className='max-w-[700px]'/>
+                <img src={`./blogs/${post.imageUrl}`}
+                alt="blog images" width={700} height={200}/>
               </div>
               <div className='py-2'>
                 <h2 className='font-semibold text-3xl pb-2'>{post.blogname}</h2>

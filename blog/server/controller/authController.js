@@ -64,7 +64,7 @@ const loginUser = async (req, res) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response);
+           
             const { email } = response.data;
             const emailExist = await Users.findOne({ email });
 
@@ -113,13 +113,10 @@ const loginUser = async (req, res) => {
     }
 };
 
-
 const authenticateUser = async (req,res) => {
     const authCookie  = req.cookies.token;
     jwt.verify(authCookie, process.env.JWT_SECRET, (err, user) => {
-        if(err){
-            return res.status(401).json({error:err.message})
-        }
+        if(err) return res.status(401).json({error:err.message})
         return res.status(200).json(user)
     })
 }
