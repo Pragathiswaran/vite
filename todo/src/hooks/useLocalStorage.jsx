@@ -3,11 +3,12 @@ import { useState } from 'react'
 const useLocalStorage = (key, initialValue) => {
   
     const [Todo, setTodo] = useState(() => {
-        try{
+        try {
             const task = window.localStorage.getItem(key);
             return task ? JSON.parse(task) : initialValue;
-        }catch(error){
+        } catch (error) {
             console.error(error);
+            return initialValue; 
         }
     });
 
@@ -33,11 +34,11 @@ const useLocalStorage = (key, initialValue) => {
 
     const updateTodo = (index, value) => {
         try {
-            const updatedTodo = Todo.map((task, i) => i === index ? {...task, task: value} : task);
+            const updatedTodo = Todo.map((task, i) => i === index ? { ...task, heading: value.heading, task: value.task } : task);
             setTodo(updatedTodo);
             window.localStorage.setItem(key, JSON.stringify(updatedTodo));
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 

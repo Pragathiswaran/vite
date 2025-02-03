@@ -19,7 +19,7 @@ const Footer = ({addTodo}) => {
         </nav>
       </footer>
       <TodoForm todoId="hs-scale-animation-modal-add-todo" 
-          todoTitle="Add New" todoHeading="" todoTask="" todoButton="Add Todo" todo={addTodo}/>
+          todoTitle="Add New" todoHeading="" todoTask="" todoButton="Add Todo" todoFunc={addTodo}/>
     </>
   )
 }

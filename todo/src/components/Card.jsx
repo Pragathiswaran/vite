@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { cardIcons } from '../utils';
 import TodoForm from './TodoForm';
 import Preline from './Preline';
 
-const Card = ({ todoData,updateTodoTask }) => {
+const Card = ({ todoData,updateTodoTask, removeTodoTask }) => {
   const TodoHeadingRefs = useRef([]);
   const TodoTaskRefs = useRef([]);
 
@@ -21,7 +21,6 @@ const Card = ({ todoData,updateTodoTask }) => {
 
   return (
     <>
-      <Preline />
       {todoData &&
         todoData.map((todo, index) => {
           const sanitizedId = todo.heading.replace(/\s+/g, '-');
@@ -44,12 +43,17 @@ const Card = ({ todoData,updateTodoTask }) => {
                           "aria-controls": `hs-scale-animation-modal-update-todo-${sanitizedId}`,
                           "data-hs-overlay": `#hs-scale-animation-modal-update-todo-${sanitizedId}`
                         })}
-                        onClick={() => getTodoValueHandler(index)}
+                        onClick={() => {
+                          const actions = {
+                            1: () => getTodoValueHandler(index),
+                            2: () => removeTodoTask(index)
+                          }
+                          actions[items.id]();
+                        }}
                       >
                         {items.icon}
-                        <span className="hs-tooltip-content absolute opacity-0 transition-opacity invisible z-10 py-1 px-2 bg-gray-900 text-white">
-                          {/* {items.label} */}
-                          hello world
+                        <span className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-white" role="tooltip">
+                          {items.id === 3 ? todo.date : items.label}
                         </span>
                       </button>
                     </div>
@@ -65,9 +69,10 @@ const Card = ({ todoData,updateTodoTask }) => {
                 todoHeading={TodoData.heading}
                 todoTask={TodoData.task}
                 todoButton="Update Todo"
-                todo={updateTodoTask}
+                todoFunc={updateTodoTask}
                 index={index}
               />
+              <Preline />
             </div>
           );
         })}

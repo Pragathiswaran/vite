@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
-const TodoForm = ({todoId, todoTitle, todoHeading, todoTask, todoButton, todo, index}) => {
+const TodoForm = ({todoId, todoTitle, todoHeading, todoTask, todoButton, todoFunc, index}) => {
 
   const [todoValues, setTodoValues] = useState({
     heading: '',
@@ -15,11 +15,21 @@ const TodoForm = ({todoId, todoTitle, todoHeading, todoTask, todoButton, todo, i
     })
   },[todoHeading,todoTask])
 
-  const addTodoTask = () => {
-    todo({
-      heading: todoValues.heading,
-      task: todoValues.task
-    })
+  const todoFuncHandler = () => {
+    if(todoFunc.length === 1){
+      todoFunc({
+        heading: todoValues.heading,
+        task: todoValues.task
+      })
+      console.log("function wiht one paramter")
+    } 
+    else {
+      todoFunc(index, {
+        heading: todoValues.heading,
+        task: todoValues.task
+      })
+      console.log("function with two paramter")
+    }
     setTodoValues({
       heading: '',
       task: ''
@@ -58,7 +68,7 @@ const TodoForm = ({todoId, todoTitle, todoHeading, todoTask, todoButton, todo, i
                <div className='mt-3'>
                 <button type='button' data-hs-overlay={`#${todoId}`} 
                   className='mt-6 w-full bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600'
-                  onClick={addTodoTask}> 
+                  onClick={todoFuncHandler}> 
                   {todoButton} 
                 </button>
                </div>

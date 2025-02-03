@@ -7,23 +7,12 @@ import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
 
-  const [todos, setTodos, updateTodo] = useLocalStorage('Todo', []);
-  const [TodoData, setTodoData] = useState([])
-
-  useEffect(() => {
-    setTodoData(todos)
-  },[todos])
-
-  const addTodo = (newTodo) => {
+  const [todos, addTodo, removeTodo, updateTodo] = useLocalStorage('Todo', []);
+  
+  const addTodoHandler = (newTodo) => {
     const date = moment().format('MMM Do YYYY, h:mm A');
-    setTodos({...newTodo, date})
-    // setTodoData([...todos, {...newTodo, date}])
+    addTodo({...newTodo, date})
   }
-
-  const updateTodoTask = (index , updatedTodo) => {
-    updateTodo(index, updatedTodo)
-  }
-
 
   return (
     <>
@@ -32,9 +21,9 @@ function App() {
           <div className="max-h-[calc(100vh-10rem)] overflow-y-auto mt-24 mb-36 md:mx-auto grid xl:grid-cols-3 
             lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 justify-items-center lg:gap-8 md:gap-6 sm:gap-y-4 gap-y-4 
             scrollbar-hide scroll-smooth">
-              {TodoData.length > 0 ? <Card todoData={TodoData} updateTodoTask={updateTodoTask} /> : <h1 className='text-2xl font-semibold text-center'>No Todo's</h1>}  
+              {todos.length > 0 ? <Card todoData={todos} updateTodoTask={updateTodo} removeTodoTask={removeTodo}/> : <h1 className='text-2xl font-semibold text-center'>No Todo's</h1>}  
           </div>
-        <Footer addTodo={addTodo}/>
+        <Footer addTodo={addTodoHandler}/>
       </div>
     </>
   )
