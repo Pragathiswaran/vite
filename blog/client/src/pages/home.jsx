@@ -34,7 +34,7 @@ const Home = () => {
               <>
               <div className='p-2'>
                 <img src={`./blogs/${post.imageUrl}`}
-                alt="blog images" width={700} height={200}/>
+                alt="blog images" className='w-[500px] h-[200px] object-center'/>
               </div>
               <div className='py-2'>
                 <h2 className='font-semibold text-3xl pb-2'>{post.blogname}</h2>
