@@ -13,3 +13,9 @@
   background-color: #f1f1f1;
   border-radius: 10px;
 }
+
+@layer utilities {
+ .otpInput{
+    @apply border-2 outline-none size-20 p-2 text-xl font-semibold text-center rounded-2xl;
+ }
+}
